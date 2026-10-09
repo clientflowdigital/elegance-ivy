@@ -1,0 +1,11 @@
+# Original photo/video uploads and the old single-file site — kept locally only
+uploads/
+_old-site/
+.thumbnail
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+node_modules/
+.vercel

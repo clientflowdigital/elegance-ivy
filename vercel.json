@@ -1,0 +1,31 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/about-us", "destination": "/about", "permanent": true },
+    { "source": "/why-us", "destination": "/about#why-us", "permanent": true },
+    { "source": "/our-clients", "destination": "/clients", "permanent": true },
+    { "source": "/contacts", "destination": "/contact", "permanent": true },
+    { "source": "/contact-us", "destination": "/contact", "permanent": true },
+    { "source": "/blog", "destination": "/journal", "permanent": true },
+    { "source": "/elegance-ivy-bags-award-at-the-africa-ceo-summit", "destination": "/journal/africa-ceo-summit-award", "permanent": true },
+    { "source": "/portfolio", "destination": "/projects", "permanent": true },
+    { "source": "/portfolio/:slug*", "destination": "/projects", "permanent": true },
+    { "source": "/service/commercial-properties", "destination": "/services/corporate-construction", "permanent": true },
+    { "source": "/service/:slug", "destination": "/services/:slug", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/videos/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
+    },
+    {
+      "source": "/(css|js)/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }]
+    }
+  ]
+}
