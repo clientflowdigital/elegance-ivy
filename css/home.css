@@ -32,3 +32,34 @@
 
 .intro-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(28px, 4vw, 72px); margin-top: clamp(40px, 6vh, 84px); }
 .intro-grid p { font-size: clamp(14px, 1.05vw, 17px); line-height: 1.8; color: var(--muted); }
+
+/* ---------- Featured project photo shuffle (js/shuffle.js) ---------- */
+.project-card .media .shuffle-layer { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.project-card .media img.leaving { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* Card 1 — crossfade with a gentle settle */
+.fx-fade { animation: shFade 1.4s var(--ease) both; }
+@keyframes shFade { from { opacity: 0; transform: scale(1.08); } to { opacity: 1; transform: scale(1); } }
+
+/* Card 2 — wipe upwards, echoing the site's reveal motif */
+.fx-wipe { animation: shWipe 1.4s var(--ease) both; }
+.fx-wipe-out { animation: shDrift 1.4s var(--ease) both; }
+@keyframes shWipe { from { clip-path: inset(100% 0 0 0); transform: scale(1.06); } to { clip-path: inset(0 0 0 0); transform: scale(1); } }
+@keyframes shDrift { to { transform: translateY(-6%) scale(1.04); filter: brightness(.6); } }
+
+/* Card 3 — doors opening from the centre */
+.fx-doors { animation: shDoors 1.4s var(--ease) both; }
+.fx-doors-out { animation: shDim 1.4s ease both; }
+@keyframes shDoors { from { clip-path: inset(0 50% 0 50%); } to { clip-path: inset(0 0 0 0); } }
+@keyframes shDim { to { filter: brightness(.45); transform: scale(1.05); } }
+
+/* Card 4+ — slide across */
+.fx-slide { animation: shSlideIn 1.4s var(--ease) both; }
+.fx-slide-out { animation: shSlideOut 1.4s var(--ease) both; }
+@keyframes shSlideIn { from { transform: translateX(100%); } to { transform: none; } }
+@keyframes shSlideOut { to { transform: translateX(-35%); filter: brightness(.5); } }
+
+/* Gold progress line along the bottom of each card */
+.shuffle-bar { position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--gold); transform: scaleX(0); transform-origin: left; z-index: 2; opacity: .85; pointer-events: none; }
+.shuffle-bar.run { animation: shBar var(--hold, 5s) linear forwards; }
+@keyframes shBar { to { transform: scaleX(1); } }
