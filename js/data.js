@@ -106,6 +106,19 @@ EI.videos = [
     image: 'team/01' }
 ];
 
+/* ---------- Clients (logos in /images/clients/) ---------- */
+EI.clients = [
+  { name: 'Econet Wireless', scope: 'Interior Design', logo: 'econet' },
+  { name: 'CV People', scope: 'Interior Design', logo: 'cv-people' },
+  { name: 'Schweppes', scope: 'Interior Design', logo: 'schweppes' },
+  { name: 'GBI Business Hub', scope: 'Interior Design', logo: 'gbi-business-hub' },
+  { name: 'The Church of Jesus Christ', scope: 'Construction', logo: 'church-of-jesus-christ' },
+  { name: 'Karanda Hospital', scope: 'Construction', logo: 'karanda-hospital' },
+  { name: 'Zimplats', scope: 'Construction', logo: 'zimplats' },
+  { name: 'Odyssey Lodge', scope: 'Construction', logo: 'odyssey-lodge' },
+  { name: 'Aurex Jewellery', scope: 'Interior Design', logo: 'aurex-jewellery' }
+];
+
 /* ---------- Testimonials ---------- */
 EI.testimonials = [
   { q: 'Elegance Ivy provides a specialized service. I was happy with the quality of their work.', a: 'John Mhlanga' },

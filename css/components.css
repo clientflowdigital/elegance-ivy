@@ -94,8 +94,10 @@
 .tile-label { font-size: 9px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); }
 .tile-value { margin-top: 14px; font-size: clamp(15px, 1.2vw, 19px); color: var(--paper); }
 
-.client-tile { display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-height: 150px; }
-.client-tile .name { font-family: var(--serif); font-size: clamp(24px, 2.2vw, 32px); line-height: 1.1; color: var(--paper); }
+.tiles > .client-tile { display: flex; flex-direction: column; justify-content: space-between; gap: 14px; min-height: 150px; padding: 26px 22px; }
+.client-tile img { height: 44px; width: auto; object-fit: contain; opacity: .95; }
+.client-name { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--paper); }
+.client-scope { margin-top: 6px; font-size: 9px; letter-spacing: .24em; color: var(--gold); }
 
 /* ---------- Galleries ---------- */
 .label-rule { display: flex; align-items: baseline; gap: 16px; margin-bottom: clamp(22px, 3vh, 38px); }

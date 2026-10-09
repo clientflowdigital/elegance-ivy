@@ -26,6 +26,15 @@
     }).join('');
   });
 
+  /* ---------- Client logo tiles ---------- */
+  each('[data-client-tiles]', (el) => {
+    el.innerHTML = EI.clients.map((c) =>
+      '<div class="client-tile" data-reveal>' +
+        '<img src="/images/clients/' + c.logo + '.png" alt="' + esc(c.name) + '" width="44" height="44" loading="lazy" decoding="async">' +
+        '<div><div class="client-name">' + esc(c.name) + '</div><div class="tile-label" style="margin-top:6px">' + esc(c.scope) + '</div></div>' +
+      '</div>').join('');
+  });
+
   /* ---------- Project cards ---------- */
   const projectCard = (p) => {
     const cover = EI.photo(p.slug + '/01');
