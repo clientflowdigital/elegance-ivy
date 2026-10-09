@@ -31,7 +31,7 @@
     el.innerHTML = EI.clients.map((c) =>
       '<div class="client-tile" data-reveal>' +
         '<img src="/images/clients/' + c.logo + '.png" alt="' + esc(c.name) + '" width="44" height="44" loading="lazy" decoding="async">' +
-        '<div><div class="client-name">' + esc(c.name) + '</div><div class="tile-label" style="margin-top:6px">' + esc(c.scope) + '</div></div>' +
+        '<div><div class="client-name">' + esc(c.name) + '</div><div class="client-scope">' + esc(c.scope) + '</div></div>' +
       '</div>').join('');
   });
 
