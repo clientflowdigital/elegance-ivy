@@ -8,7 +8,7 @@
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const EFFECTS = ['fx-fade', 'fx-wipe', 'fx-doors', 'fx-slide'];
-  const TRANSITION = 1400; // ms, matches the CSS animations
+  const TRANSITION = 1000; // ms, matches the CSS animations
 
   const shuffled = (n) => {
     const a = Array.from({ length: n - 1 }, (_, i) => i + 2); // cover (1) stays first
@@ -27,7 +27,7 @@
     const media = card.querySelector('.media');
     const count = card.querySelector('.meta-line span:last-child');
     const effect = EFFECTS[idx % EFFECTS.length];
-    const hold = 4200 + idx * 900; // each card keeps its own rhythm
+    const hold = Math.max(1400, 2000 - idx * 300); // 2.0s, 1.7s, 1.4s — each card keeps its own rhythm
     const order = shuffled(p.count);
     let pos = 0;
     let timer = null;
