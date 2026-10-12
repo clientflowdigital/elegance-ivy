@@ -23,6 +23,22 @@
   };
   EI.observe();
 
+  /* ---------- Crew video: large play button over the cover ----------
+     Without JS the native controls stay, so the video still plays. */
+  document.querySelectorAll('.crew-video').forEach((box) => {
+    const video = box.querySelector('video');
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'crew-play';
+    btn.setAttribute('aria-label', 'Play video: meet the crew behind the build');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+    const start = () => { video.controls = true; btn.hidden = true; };
+    video.controls = false;
+    box.append(btn);
+    btn.addEventListener('click', () => { start(); video.play(); video.focus(); });
+    video.addEventListener('play', start);
+  });
+
   /* ---------- Hero video ---------- */
   const v = document.querySelector('[data-hero-video]');
   if (!v) return;

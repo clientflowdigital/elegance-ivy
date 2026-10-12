@@ -162,8 +162,17 @@
 .crew-title { margin-top: 20px; max-width: 16ch; }
 .crew-text { margin-top: 24px; }
 .crew-link { display: inline-block; margin-top: 28px; }
-.crew-video { justify-self: center; width: 100%; max-width: 420px; }
+.crew-video { position: relative; justify-self: center; width: 100%; max-width: 420px; }
 .crew-video video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; background: var(--ink-2); border: 1px solid var(--line-2); }
+.crew-play {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 88px; height: 88px; border-radius: 50%; border: 0; background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 8px rgba(10,10,9,.45), 0 10px 40px rgba(10,10,9,.55); transition: transform .6s var(--ease), box-shadow .6s var(--ease);
+}
+.crew-play svg { width: 30px; height: 30px; margin-left: 4px; fill: var(--ink); }
+.crew-play:hover, .crew-play:focus-visible { transform: translate(-50%, -50%) scale(1.08); box-shadow: 0 0 0 12px rgba(10,10,9,.45), 0 10px 40px rgba(10,10,9,.55); }
+.crew-play[hidden] { display: none; }
 
 .video-card { display: block; color: var(--paper); }
 .video-card:hover { color: var(--paper); }
