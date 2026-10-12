@@ -28,8 +28,7 @@
   if (!v) return;
 
   const saveData = navigator.connection && (navigator.connection.saveData || /2g/.test(navigator.connection.effectiveType || ''));
-  const phone = matchMedia('(max-width: 767px)').matches; // spare mobile data
-  if (reduce || saveData || phone) return; // poster image stays
+  if (reduce || saveData) return; // poster image stays
 
   v.muted = true;
   v.defaultMuted = true;
@@ -48,11 +47,8 @@
   v.src = v.dataset.src;
   play();
 
-  // Pause when the hero is off screen or the tab is hidden — saves battery.
-  let onScreen = true;
-  const sync = () => (onScreen && !document.hidden ? play() : v.pause());
-  if (io) {
-    new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; sync(); }, { threshold: 0 }).observe(v);
-  }
-  document.addEventListener('visibilitychange', sync);
+  // The client wants the video playing at all times: if the browser pauses
+  // it (tab switch, app backgrounded), start it again.
+  v.addEventListener('pause', () => { if (!document.hidden) play(); });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) play(); });
 })();
