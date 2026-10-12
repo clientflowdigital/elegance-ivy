@@ -28,7 +28,8 @@
   if (!v) return;
 
   const saveData = navigator.connection && (navigator.connection.saveData || /2g/.test(navigator.connection.effectiveType || ''));
-  if (reduce || saveData) return; // poster image stays
+  const phone = matchMedia('(max-width: 767px)').matches; // spare mobile data
+  if (reduce || saveData || phone) return; // poster image stays
 
   v.muted = true;
   v.defaultMuted = true;

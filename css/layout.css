@@ -49,7 +49,8 @@
 
 /* ---------- Inner page hero ---------- */
 .page-hero { position: relative; overflow: hidden; min-height: clamp(400px, 62vh, 660px); display: flex; align-items: flex-end; }
-.page-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.6) saturate(.95); animation: kb 30s ease-in-out infinite alternate; }
+.page-hero picture, .cta-image picture { display: contents; }
+.page-hero > picture > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.6) saturate(.95); animation: kb 30s ease-in-out infinite alternate; }
 .page-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,9,.8) 0%, rgba(10,10,9,.42) 45%, rgba(10,10,9,.94) 100%); }
 .page-hero-inner { position: relative; z-index: 1; width: 100%; max-width: var(--max); margin: 0 auto; padding: clamp(120px, 18vh, 200px) var(--gutter) clamp(40px, 7vh, 80px); }
 .page-hero .lead { margin-top: clamp(20px, 3vh, 34px); }
@@ -75,7 +76,7 @@
 .cta-band h2 { font-size: clamp(32px, 5.2vw, 86px); line-height: 1.02; letter-spacing: -.008em; max-width: 20ch; }
 
 .cta-image { position: relative; overflow: hidden; border-top: 1px solid var(--line); }
-.cta-image > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.45) saturate(.95); }
+.cta-image > picture > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.45) saturate(.95); }
 .cta-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,9,.72), rgba(10,10,9,.9)); }
 .cta-image .wrap { position: relative; z-index: 1; padding-top: clamp(80px, 16vh, 190px); padding-bottom: clamp(80px, 16vh, 190px); }
 .cta-image h2 { font-size: clamp(38px, 7.8vw, 134px); line-height: .96; letter-spacing: -.012em; max-width: 17ch; }
