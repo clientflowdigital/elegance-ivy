@@ -26,7 +26,7 @@
 .hero-lead { margin-top: clamp(24px, 3.4vh, 40px); font-size: clamp(14px, 1.1vw, 17px); line-height: 1.7; color: rgba(239,236,230,.7); max-width: 42ch; }
 .hero .btn-row { margin-top: clamp(26px, 3.8vh, 44px); }
 .hero .btn { padding: 20px 34px; }
-.scroll-cue { display: flex; align-items: center; gap: 12px; margin-top: clamp(26px, 5vh, 56px); font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: rgba(239,236,230,.4); }
+.scroll-cue { display: flex; align-items: center; gap: 12px; margin-top: clamp(26px, 5vh, 56px); font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted-2); }
 .scroll-cue span { display: inline-block; animation: bob 2.6s ease-in-out infinite; }
 [data-hero-in] { opacity: 0; transform: translateY(20px); animation: heroIn 1.25s var(--ease) forwards; }
 

@@ -60,7 +60,12 @@
   grain.className = 'grain';
   grain.setAttribute('aria-hidden', 'true');
 
-  document.body.prepend(grain, header, menu);
+  const skip = document.createElement('a');
+  skip.className = 'skip-link';
+  skip.href = '#main';
+  skip.textContent = 'Skip to content';
+
+  document.body.prepend(skip, grain, header, menu);
 
   const burger = header.querySelector('.burger');
   const openMenu = () => {
@@ -80,6 +85,15 @@
   menu.querySelector('[data-close]').addEventListener('click', closeMenu);
   menu.addEventListener('click', (e) => { if (e.target.closest('a')) closeMenu(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+
+  // Keep Tab inside the open menu (it is a modal dialog).
+  menu.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const items = menu.querySelectorAll('a, button');
+    const first = items[0], last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 
   const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 60);
   window.addEventListener('scroll', onScroll, { passive: true });

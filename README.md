@@ -27,6 +27,7 @@ then open http://localhost:3000 (pages use root paths like `/css/…`, so openin
 - **Contact form:** "Open in email app" opens the visitor's own email app with the enquiry pre-written, and "Send on WhatsApp" does the same in WhatsApp. No form service is used, so enquiries are never stored by a third party.
 - **Add photos to a project:** add `NN.jpg` (max ~2000px) and `NN-sm.jpg` (~900px) to `images/projects/<project>/`, then raise that project's `count` in `js/data.js`.
 - **Add a project:** new folder in `images/projects/`, an entry in `EI.projects`, and a page in `projects/` (copy an existing one).
+- **Security headers** live in `vercel.json`. The Content-Security-Policy allows the two inline `<script>` blocks (the `js` class one-liner on every page, and the old-link redirect on the home page) by their SHA-256 hash. If you edit either script, update its hash in `vercel.json` or the browser will block it.
 
 ## Not deployed
 `uploads/` (original photos) and `_old-site/` (the previous single-file site) are excluded by `.vercelignore`.

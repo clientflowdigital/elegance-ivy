@@ -100,7 +100,7 @@
         '<div class="filters" role="group" aria-label="Filter by category">' +
           cats.map((c, i) => '<button type="button" aria-pressed="' + (i === 0) + '" data-cat="' + c + '">' + c + '</button>').join('') +
         '</div>' +
-        '<div class="link-arrow" style="color:rgba(239,236,230,.4)" aria-live="polite"><span data-count></span> images</div>' +
+        '<div class="link-arrow" style="color:var(--muted-2)" aria-live="polite"><span data-count></span> images</div>' +
       '</div>' +
       '<div class="masonry" data-lb-scope></div>';
 
