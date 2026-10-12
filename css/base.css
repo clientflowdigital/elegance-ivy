@@ -32,6 +32,7 @@ body {
   overflow-x: hidden;
 }
 img { display: block; max-width: 100%; }
+video { max-width: 100%; height: auto; }
 a { color: var(--gold); text-decoration: none; transition: color .35s ease; }
 a:hover { color: var(--paper); }
 ::selection { background: var(--gold); color: var(--ink); }
@@ -76,6 +77,7 @@ button { cursor: pointer; }
 .lead { font-size: clamp(14px, 1.15vw, 19px); line-height: 1.7; color: rgba(239,236,230,.72); max-width: 56ch; }
 .small { font-size: 13.5px; line-height: 1.75; color: rgba(239,236,230,.6); }
 .link-arrow { font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+@media (max-width: 480px) { .link-arrow { white-space: normal; } }
 
 .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 20px 24px; flex-wrap: wrap; margin-bottom: clamp(32px, 5vh, 60px); }
 .section-head .eyebrow { display: block; margin-bottom: 20px; }
