@@ -158,6 +158,13 @@
 .article p + p { margin-top: 24px; }
 
 /* ---------- Videos ---------- */
+/* Builder video (portrait, plays on tap with sound) */
+.crew-title { margin-top: 20px; max-width: 16ch; }
+.crew-text { margin-top: 24px; }
+.crew-link { display: inline-block; margin-top: 28px; }
+.crew-video { justify-self: center; width: 100%; max-width: 420px; }
+.crew-video video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; background: var(--ink-2); border: 1px solid var(--line-2); }
+
 .video-card { display: block; color: var(--paper); }
 .video-card:hover { color: var(--paper); }
 .video-card .media { position: relative; overflow: hidden; aspect-ratio: 16 / 10; background: var(--ink-2); }
