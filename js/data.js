@@ -19,11 +19,7 @@ EI.site = {
     facebook: 'https://www.facebook.com/EleganceIvyInteriorDesigners/',
     instagram: 'https://www.instagram.com/elegance.ivy/',
     x: 'https://x.com/eleganceivy'
-  },
-  // Formspree form ID — the part after /f/ in your endpoint,
-  // e.g. 'xyzabcde' for https://formspree.io/f/xyzabcde.
-  // Until this is set, "Send by email" opens the visitor's email app instead.
-  formspreeId: ''
+  }
 };
 
 /* ---------- Projects ----------

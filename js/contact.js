@@ -1,6 +1,7 @@
 /* ==========================================================================
-   Contact form: "Send by email" posts to Formspree (EI.site.formspreeId);
-   "Send on WhatsApp" opens WhatsApp with the enquiry pre-written.
+   Contact form: "Open in email app" opens the visitor's own email app with
+   the enquiry pre-written; "Send on WhatsApp" does the same in WhatsApp.
+   Nothing is sent to or stored by a third-party form service.
    ========================================================================== */
 
 (() => {
@@ -8,7 +9,6 @@
   if (!form) return;
   const S = EI.site;
   const status = form.querySelector('[data-status]');
-  const emailBtn = form.querySelector('[data-send-email]');
 
   const say = (msg, kind) => {
     status.textContent = msg;
@@ -26,20 +26,24 @@
     };
   };
 
-  // Name and message are required, plus at least one way to reply.
-  const validate = (v, needEmail) => {
+  // Name and message are required. An email, if given, must look valid.
+  // WhatsApp also needs a phone or email so we can reply; an email sent from
+  // the visitor's own app already carries their address.
+  const validate = (v, needContact) => {
     form.querySelectorAll('[aria-invalid]').forEach((f) => f.removeAttribute('aria-invalid'));
     const bad = [];
     if (!v.name) bad.push('name');
+    if (v.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) bad.push('email');
+    if (needContact && !v.email && !v.phone) bad.push('phone');
     if (!v.message) bad.push('message');
-    if (needEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) bad.push('email');
-    if (!needEmail && !v.email && !v.phone) bad.push('phone');
     bad.forEach((n) => form.elements[n].setAttribute('aria-invalid', 'true'));
     if (bad.length) {
       form.elements[bad[0]].focus();
-      say(needEmail && bad.includes('email')
-        ? 'Please add your name, a valid email address and a short message.'
-        : 'Please add your name, a contact number or email, and a short message.', 'err');
+      say(bad.includes('email')
+        ? 'Please check your email address — it does not look complete.'
+        : needContact
+          ? 'Please add your name, a contact number or email, and a short message.'
+          : 'Please add your name and a short message.', 'err');
       return false;
     }
     return true;
@@ -52,41 +56,21 @@
     (v.phone ? 'Phone: ' + v.phone + '\n' : '') +
     'Service: ' + v.service + '\n\n' + v.message;
 
-  /* ---------- Email via Formspree ---------- */
-  form.addEventListener('submit', async (e) => {
+  /* ---------- Email app ---------- */
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
     const v = values();
-    if (!validate(v, true)) return;
-    if (form.elements._gotcha && form.elements._gotcha.value) return; // bot
-
-    if (!S.formspreeId) {
-      // Not configured yet: fall back to the visitor's email app.
-      location.href = 'mailto:' + S.email + '?subject=' + encodeURIComponent('Project enquiry — ' + v.service) + '&body=' + encodeURIComponent(summary(v));
-      return;
-    }
-
-    emailBtn.disabled = true;
-    say('Sending…');
-    try {
-      const res = await fetch('https://formspree.io/f/' + S.formspreeId, {
-        method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: new FormData(form)
-      });
-      if (!res.ok) throw new Error(res.status);
-      form.reset();
-      say('Thank you — your enquiry has been sent. We will be in touch shortly.', 'ok');
-    } catch (err) {
-      say('Sorry, that did not go through. Please try WhatsApp or email ' + S.email + ' directly.', 'err');
-    } finally {
-      emailBtn.disabled = false;
-    }
+    if (!validate(v, false)) return;
+    // The browser gives no signal if no email app is set up, so always
+    // show the address as a fallback.
+    say('Your email app should open with the enquiry ready — just press send. If nothing opened, email us at ' + S.email + ' or use WhatsApp.', 'ok');
+    location.href = 'mailto:' + S.email + '?subject=' + encodeURIComponent('Project enquiry — ' + v.service) + '&body=' + encodeURIComponent(summary(v));
   });
 
   /* ---------- WhatsApp ---------- */
   form.querySelector('[data-send-whatsapp]').addEventListener('click', () => {
     const v = values();
-    if (!validate(v, false)) return;
+    if (!validate(v, true)) return;
     window.open('https://wa.me/' + S.whatsapp + '?text=' + encodeURIComponent(summary(v)), '_blank', 'noopener');
     say('WhatsApp opened with your enquiry — just press send.', 'ok');
   });

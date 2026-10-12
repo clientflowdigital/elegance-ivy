@@ -11,11 +11,11 @@ then open http://localhost:3000 (pages use root paths like `/css/…`, so openin
 ## Where things live
 | What | File |
 |---|---|
-| Contact details, projects, services, testimonials, **Facebook videos**, **Formspree ID** | `js/data.js` |
+| Contact details, projects, services, testimonials, **Facebook videos** | `js/data.js` |
 | Header, menu, footer, WhatsApp button, back button | `js/layout.js` |
 | Cards and galleries built from the data | `js/render.js` |
 | Photo viewer | `js/lightbox.js` |
-| Contact form (email + WhatsApp) | `js/contact.js` |
+| Contact form (email app + WhatsApp) | `js/contact.js` |
 | Design tokens, type, animations | `css/base.css` |
 | Header / footer / page hero styles | `css/layout.css` |
 | Buttons, cards, galleries, form | `css/components.css` |
@@ -24,7 +24,7 @@ then open http://localhost:3000 (pages use root paths like `/css/…`, so openin
 
 ## Common edits
 - **Add a Facebook video:** add an entry to `EI.videos` in `js/data.js` (title, Facebook URL, cover photo). The Videos page and a "Watch our work" strip on the home page appear automatically.
-- **Turn on email enquiries:** create a form at formspree.io (send to sales@eleganceivy.co.zw), then paste its ID into `formspreeId` in `js/data.js`. Until then, "Send by email" opens the visitor's email app.
+- **Contact form:** "Open in email app" opens the visitor's own email app with the enquiry pre-written, and "Send on WhatsApp" does the same in WhatsApp. No form service is used, so enquiries are never stored by a third party.
 - **Add photos to a project:** add `NN.jpg` (max ~2000px) and `NN-sm.jpg` (~900px) to `images/projects/<project>/`, then raise that project's `count` in `js/data.js`.
 - **Add a project:** new folder in `images/projects/`, an entry in `EI.projects`, and a page in `projects/` (copy an existing one).
 

@@ -197,7 +197,6 @@
 .field textarea { border: 1px solid rgba(239,236,230,.18); padding: 14px; resize: vertical; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); }
 .field [aria-invalid="true"] { border-color: #D98A6A; }
-.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .form-status { font-size: 13px; line-height: 1.6; min-height: 1.6em; color: var(--muted); }
 .form-status.ok { color: var(--gold); }
 .form-status.err { color: #E5A08A; }

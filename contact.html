@@ -58,12 +58,10 @@
 
     <form class="form" data-contact-form novalidate>
       <div class="eyebrow">Project enquiry</div>
-      <input type="hidden" name="_subject" value="New project enquiry — eleganceivy.co.zw">
-      <label class="hp" aria-hidden="true">Leave empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
       <div class="form-grid">
-        <label class="field">Full name<input type="text" name="name" autocomplete="name" placeholder="Your name" required></label>
-        <label class="field">Email<input type="email" name="email" autocomplete="email" placeholder="you@company.com"></label>
-        <label class="field">Phone<input type="tel" name="phone" autocomplete="tel" placeholder="+263"></label>
+        <label class="field">Full name<input type="text" name="name" maxlength="100" autocomplete="name" placeholder="Your name" required></label>
+        <label class="field">Email<input type="email" name="email" maxlength="254" autocomplete="email" placeholder="you@company.com"></label>
+        <label class="field">Phone<input type="tel" name="phone" maxlength="30" autocomplete="tel" placeholder="+263"></label>
         <label class="field">Service
           <select name="service">
             <option>Residential Construction</option>
@@ -77,9 +75,9 @@
           </select>
         </label>
       </div>
-      <label class="field">Tell us about the project<textarea name="message" rows="5" placeholder="Scope, location, timeline" required></textarea></label>
+      <label class="field">Tell us about the project<textarea name="message" rows="5" maxlength="1500" placeholder="Scope, location, timeline" required></textarea></label>
       <div class="btn-row">
-        <button class="btn btn-gold" type="submit" data-send-email>Send by email <span>&#8594;</span></button>
+        <button class="btn btn-gold" type="submit">Open in email app <span>&#8594;</span></button>
         <button class="btn btn-wa" type="button" data-send-whatsapp>Send on WhatsApp <span>&#8599;</span></button>
       </div>
       <p class="form-status" data-status role="status" aria-live="polite"></p>
