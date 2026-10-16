@@ -1,86 +1,164 @@
 /* ==========================================================================
-   Base: design tokens, reset, typography, motion
+   Base: design tokens, tones, reset, typography, motion
+
+   Concept: "The Monograph". The site reads like a printed hotel or
+   architecture book: high-contrast Didone display type, warm espresso and
+   ivory pages that alternate, brass hairlines, folio numbers and generous
+   margins.
+
+   Tones: every section is dark (espresso) by default. Add .tone-paper
+   (ivory) or .tone-stone (travertine) to a section to flip it light.
+   Components only use the semantic tokens (--bg, --fg, --rule, --accent …),
+   so they work on any tone.
    ========================================================================== */
 
 :root {
-  --ink: #0A0A09;
-  --ink-2: #131210;
-  --ink-3: #0F0E0C;
-  --paper: #EFECE6;
-  --gold: #C9A961;
-  --line: rgba(239, 236, 230, .09);
-  --line-2: rgba(239, 236, 230, .14);
-  --muted: rgba(239, 236, 230, .68);
-  --muted-2: rgba(239, 236, 230, .5);
-  --serif: 'Cormorant Garamond', 'Cormorant', Georgia, serif;
-  --sans: 'Manrope', system-ui, sans-serif;
+  /* Palette (base tier) */
+  --espresso: #0E0C0A;
+  --espresso-2: #17140F;
+  --espresso-3: #221D17;
+  --ivory: #F4EFE7;
+  --bone: #EBE3D7;
+  --stone: #DCD0BE;
+  --brass: #BE9C63;        /* on dark: 7:1 against espresso */
+  --brass-deep: #7A5C30;   /* on light: 5.3:1 against ivory */
+
+  /* Semantic tier (dark tone is the default) */
+  --bg: var(--espresso);
+  --surface: var(--espresso-2);
+  --fg: #F1ECE3;
+  --fg-2: rgba(241, 236, 227, .72);
+  --fg-3: rgba(241, 236, 227, .52);
+  --rule: rgba(241, 236, 227, .14);
+  --rule-strong: rgba(241, 236, 227, .28);
+  --accent: var(--brass);
+  --accent-ink: var(--espresso);
+
+  /* Type */
+  --display: 'Bodoni Moda', 'Bodoni 72', Didot, 'Times New Roman', serif;
+  --sans: 'Jost', 'Futura', 'Century Gothic', system-ui, sans-serif;
+
+  /* Space and motion */
   --ease: cubic-bezier(.16, 1, .3, 1);
-  --gutter: clamp(20px, 4vw, 64px);
-  --max: 1600px;
+  --gutter: clamp(16px, 4.4vw, 72px);
+  --max: 1520px;
+  --section: clamp(84px, 13vh, 168px);
+
+  /* Photo grading: warms and calms mixed site photography so it reads as one set */
+  --grade: saturate(.84) contrast(1.04) sepia(.06);
 }
 
+.tone-paper, .tone-stone {
+  --bg: var(--ivory);
+  --surface: var(--bone);
+  --fg: #1A1611;
+  --fg-2: rgba(26, 22, 17, .74);
+  --fg-3: rgba(26, 22, 17, .56);
+  --rule: rgba(26, 22, 17, .14);
+  --rule-strong: rgba(26, 22, 17, .3);
+  --accent: var(--brass-deep);
+  --accent-ink: var(--ivory);
+}
+.tone-stone { --bg: var(--stone); --surface: #E6DCCD; --fg-3: rgba(26, 22, 17, .62); }
+.tone-dark { --bg: var(--espresso); }
+.tone-paper, .tone-stone, .tone-dark { background: var(--bg); color: var(--fg); }
+
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--bg);
+  color: var(--fg);
   font-family: var(--sans);
   font-weight: 300;
-  letter-spacing: .005em;
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 img { display: block; max-width: 100%; }
 video { max-width: 100%; height: auto; }
-a { color: var(--gold); text-decoration: none; transition: color .35s ease; }
-a:hover { color: var(--paper); }
-::selection { background: var(--gold); color: var(--ink); }
-h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
+a { color: var(--accent); text-decoration: none; transition: color .35s ease; }
+a:hover { color: var(--fg); }
+::selection { background: var(--brass); color: var(--espresso); }
+h1, h2, h3, h4, p, figure, blockquote, ol, ul { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
 input, textarea, button, select { font: inherit; color: inherit; }
 button { cursor: pointer; }
-:focus-visible { outline: 1px solid var(--gold); outline-offset: 3px; }
-.skip-link { position: fixed; top: 12px; left: 12px; z-index: 1000; padding: 12px 18px; background: var(--gold); color: var(--ink); font-size: 13px; font-weight: 500; transform: translateY(-200%); }
-.skip-link:focus { transform: none; color: var(--ink); }
+:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
+.skip-link { position: fixed; top: 12px; left: 12px; z-index: 1000; padding: 12px 18px; background: var(--brass); color: var(--espresso); font-size: 13px; font-weight: 500; transform: translateY(-200%); }
+.skip-link:focus { transform: none; color: var(--espresso); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 ::-webkit-scrollbar { width: 9px; }
-::-webkit-scrollbar-track { background: var(--ink); }
-::-webkit-scrollbar-thumb { background: #2A2723; }
+::-webkit-scrollbar-track { background: var(--espresso); }
+::-webkit-scrollbar-thumb { background: #3A3128; }
 
 /* Film grain overlay */
 .grain {
-  position: fixed; inset: 0; pointer-events: none; z-index: 60; opacity: .035;
+  position: fixed; inset: 0; pointer-events: none; z-index: 60; opacity: .04;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>");
 }
 
 /* ---------- Layout helpers ---------- */
 .wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
-.wrap-narrow { max-width: 1180px; }
-.section { padding-top: clamp(72px, 12vh, 150px); padding-bottom: clamp(72px, 12vh, 150px); }
-.section-sm { padding-top: clamp(48px, 8vh, 110px); padding-bottom: clamp(48px, 8vh, 110px); }
-.section-alt { background: var(--ink-2); border-top: 1px solid rgba(239,236,230,.08); border-bottom: 1px solid rgba(239,236,230,.08); }
-.rule-top { border-top: 1px solid var(--line); }
-.rule-bottom { border-bottom: 1px solid var(--line); }
+.wrap-narrow { max-width: 1120px; }
+.section { padding-top: var(--section); padding-bottom: var(--section); }
+.section-sm { padding-top: clamp(56px, 9vh, 112px); padding-bottom: clamp(56px, 9vh, 112px); }
+.section-alt { background: var(--surface); }
+.rule-top { border-top: 1px solid var(--rule); }
+.rule-bottom { border-bottom: 1px solid var(--rule); }
 
 /* ---------- Typography ---------- */
-.display, .h1, .h2, .h2-sm, .h3, .statement { font-family: var(--serif); font-weight: 400; }
-.h1 { font-size: clamp(38px, 7.2vw, 120px); line-height: .97; letter-spacing: -.01em; max-width: 19ch; text-wrap: balance; }
-.h2 { font-size: clamp(34px, 5.6vw, 86px); line-height: 1; letter-spacing: -.008em; }
-.h2-sm { font-size: clamp(30px, 4.4vw, 64px); line-height: 1.04; letter-spacing: -.005em; }
-.h3 { font-size: clamp(22px, 2.3vw, 33px); line-height: 1.15; letter-spacing: -.002em; }
-.statement { font-size: clamp(30px, 5.1vw, 78px); line-height: 1.1; font-weight: 300; letter-spacing: -.006em; max-width: 25ch; text-wrap: pretty; }
-.eyebrow { font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); font-weight: 400; }
-.num { font-size: 10px; letter-spacing: .2em; color: var(--gold); }
-.body { font-size: clamp(14px, 1.05vw, 17px); line-height: 1.8; color: var(--muted); max-width: 60ch; }
+.display, .h1, .h2, .h2-sm, .h3, .statement, .title-xl {
+  font-family: var(--display); font-weight: 400; font-optical-sizing: auto;
+}
+/* Hotel-style capitals: the signature headline treatment */
+.title-xl {
+  font-size: clamp(44px, 8.4vw, 148px); line-height: .92; letter-spacing: .01em; text-transform: uppercase;
+}
+.h1 { font-size: clamp(40px, 6.8vw, 112px); line-height: .96; letter-spacing: .005em; text-transform: uppercase; max-width: 16ch; text-wrap: balance; }
+.h2 { font-size: clamp(36px, 5.4vw, 92px); line-height: .98; letter-spacing: .008em; text-transform: uppercase; }
+.h2-sm { font-size: clamp(30px, 3.8vw, 60px); line-height: 1.04; }
+.h3 { font-size: clamp(22px, 2.1vw, 32px); line-height: 1.18; }
+.statement { font-size: clamp(26px, 3.4vw, 54px); line-height: 1.22; max-width: 26ch; text-wrap: pretty; }
+/* Italic accent words inside headings: <em> */
+.title-xl em, .h1 em, .h2 em, .h2-sm em, .statement em, .display em {
+  font-style: italic; text-transform: none; color: var(--accent); letter-spacing: -.005em;
+}
+.eyebrow { display: inline-block; font-size: 11px; letter-spacing: .34em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+.num { font-family: var(--display); font-size: 15px; letter-spacing: .04em; color: var(--accent); font-variant-numeric: lining-nums; }
+.body { font-size: clamp(15px, 1.06vw, 17px); line-height: 1.8; color: var(--fg-2); max-width: 58ch; }
 .body + .body { margin-top: 18px; }
-.lead { font-size: clamp(14px, 1.15vw, 19px); line-height: 1.7; color: rgba(239,236,230,.72); max-width: 56ch; }
-.small { font-size: 13.5px; line-height: 1.75; color: rgba(239,236,230,.6); }
-.link-arrow { font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+.lead { font-size: clamp(16px, 1.2vw, 19px); line-height: 1.7; color: var(--fg-2); max-width: 52ch; }
+.small { font-size: 14px; line-height: 1.75; color: var(--fg-2); }
+.link-arrow { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; font-weight: 500; color: var(--accent); white-space: nowrap; }
 @media (max-width: 480px) { .link-arrow { white-space: normal; } }
 
-.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 20px 24px; flex-wrap: wrap; margin-bottom: clamp(32px, 5vh, 60px); }
-.section-head .eyebrow { display: block; margin-bottom: 20px; }
+.section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px 32px; flex-wrap: wrap; margin-bottom: clamp(36px, 6vh, 72px); }
+.section-head .eyebrow { display: block; margin-bottom: 22px; }
+
+/* Folio: the running header of a printed page. "02 — Philosophy ……… Elegance Ivy" */
+.folio {
+  display: flex; align-items: center; gap: 18px;
+  font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--fg-3); font-weight: 400;
+  margin-bottom: clamp(40px, 7vh, 88px);
+}
+.folio b { font-family: var(--display); font-weight: 400; font-size: 14px; letter-spacing: .06em; color: var(--accent); }
+.folio::after { content: ""; flex: 1; height: 1px; background: var(--rule); order: 2; }
+.folio span:last-child { order: 3; }
+
+/* Giant outlined word set behind a section */
+.ghost {
+  position: absolute; pointer-events: none; user-select: none; white-space: nowrap;
+  font-family: var(--display); font-weight: 400; text-transform: uppercase; line-height: .8;
+  font-size: clamp(90px, 19vw, 340px); letter-spacing: .02em;
+  color: transparent; -webkit-text-stroke: 1px var(--rule-strong); opacity: .7;
+}
+
+/* Brass hairline ornament: a short rule with a diamond */
+.ornament { display: flex; align-items: center; gap: 10px; color: var(--accent); }
+.ornament::before, .ornament::after { content: ""; width: 44px; height: 1px; background: currentColor; opacity: .6; }
+.ornament i { width: 6px; height: 6px; border: 1px solid currentColor; transform: rotate(45deg); }
 
 /* ---------- Motion ---------- */
 /* Hidden-until-revealed only applies when JS is running (html.js), so content
@@ -89,9 +167,9 @@ button { cursor: pointer; }
 .js [data-reveal].in { opacity: 1; transform: none; }
 /* The clip goes on the children: a fully clipped element never reports as
    intersecting, so clipping [data-clip] itself would stop it ever revealing. */
-.js [data-clip] > * { clip-path: inset(0 0 100% 0); transition: clip-path 1.3s var(--ease); }
+.js [data-clip] > * { clip-path: inset(0 0 100% 0); transition: clip-path 1.4s var(--ease); }
 .js [data-clip].in > * { clip-path: inset(0 0 0 0); }
-.js [data-rise] img { transform: scale(1.045); transition: transform 1.6s var(--ease); }
+.js [data-rise] img { transform: scale(1.06); transition: transform 1.8s var(--ease); }
 .js [data-rise].in img { transform: scale(1); }
 
 [data-stagger] > *:nth-child(2) { transition-delay: 90ms; }
@@ -102,16 +180,23 @@ button { cursor: pointer; }
 [data-stagger] > *:nth-child(n+7) { transition-delay: 470ms; }
 
 [data-underline] { position: relative; }
-[data-underline]::after { content: ""; position: absolute; left: 0; bottom: -6px; height: 1px; width: 0; background: var(--gold); transition: width .5s var(--ease); }
+[data-underline]::after { content: ""; position: absolute; left: 0; bottom: -6px; height: 1px; width: 0; background: var(--accent); transition: width .5s var(--ease); }
 [data-underline]:hover::after, [data-underline][aria-current="page"]::after { width: 100%; }
 
-main { animation: pageIn .5s var(--ease); }
+/* Gentle parallax on background plates, where the browser supports
+   scroll-driven animations. Elsewhere the image simply stays still. */
+@supports (animation-timeline: view()) {
+  [data-parallax] { animation: drift linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }
+  @keyframes drift { from { transform: translateY(-7%) scale(1.14); } to { transform: translateY(7%) scale(1.14); } }
+}
 
-@keyframes pageIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+main { animation: pageIn .6s var(--ease); }
+
+@keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes heroIn { to { opacity: 1; transform: none; } }
-@keyframes kb { from { transform: scale(1.02); } to { transform: scale(1.14); } }
+@keyframes kb { from { transform: scale(1.02); } to { transform: scale(1.12); } }
 @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
-@keyframes bob { 0%, 100% { transform: translateY(0); opacity: .4; } 50% { transform: translateY(9px); opacity: 1; } }
+@keyframes bob { 0%, 100% { transform: scaleY(.3); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } }
 @keyframes menuIn { to { opacity: 1; transform: none; } }
 
 @media (prefers-reduced-motion: reduce) {
