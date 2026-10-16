@@ -28,7 +28,7 @@ The site is styled like a printed hotel or architecture book.
 - **Tones:** sections are dark (espresso) by default. Add `tone-paper` (ivory) or `tone-stone` (travertine) to a `<section>` to make it light. Components use only the semantic tokens in `css/base.css` (`--bg`, `--fg`, `--accent` …), so they work on either tone. Don't hard-code colours.
 - **Page furniture:** `.folio` (numbered running header at the top of a section), `.ghost` (giant outlined word), `.ornament`, `.dropcap`, `.plate` (full-bleed background picture).
 - **Logo:** the client's own `images/brand/logo-light.png`, used as supplied (header centre, menu, footer). Never alter or recompose it.
-- **Motion:** home opening (logo reveal, `js/loader.js` + `css/home.css`, once per visit), headline and brass curtain reveals (`data-reveal`, `data-curtain`), count-up numbers (`data-count`), the pinned sideways project showcase (`data-showcase`), parallax (`data-parallax`) and the "View" cursor all live in `js/motion.js`. Everything is skipped for visitors who ask for reduced motion.
+- **Motion:** headline and brass curtain reveals (`data-reveal`, `data-curtain`), count-up numbers (`data-count`), the pinned sideways project showcase (`data-showcase`), parallax (`data-parallax`) and the "View" cursor all live in `js/motion.js`. Everything is skipped for visitors who ask for reduced motion.
 - **Photo grading:** `--grade` in `css/base.css` slightly warms and calms photos so site and interior shots sit together. Set it to `none` to switch it off.
 - **Feature images:** `images/feature/` holds client-supplied mood images (pavilion, tower, bar). Use them only as backgrounds, not as Elegance Ivy projects, until the client confirms they are their own work.
 
