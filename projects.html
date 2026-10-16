@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="/css/base.css?v=2">
 <link rel="stylesheet" href="/css/layout.css?v=2">
 <link rel="stylesheet" href="/css/components.css?v=2">
+<link rel="stylesheet" href="/css/pages.css?v=2">
 <script>document.documentElement.classList.add('js')</script>
 <script src="/js/data.js?v=2" defer></script>
 <script src="/js/layout.js?v=2" defer></script>
@@ -36,19 +37,29 @@
   <div class="page-hero-inner">
     <a class="back" href="/" data-back><span>&#8592;</span> Back</a>
     <div class="crumbs"><a href="/">Home</a><span class="sep">/</span>Projects</div>
-    <h1 class="h1">Our projects</h1>
+    <h1 class="h1">Our <em>projects</em></h1>
     <p class="lead">We continue to grow and evolve Elegance Ivy for the betterment of our clients and our people. Below are some of our recent projects.</p>
   </div>
 </section>
 
-<section class="section-sm">
-  <div class="wrap" data-project-cards="all"></div>
+<section class="section tone-paper">
+  <div class="wrap">
+    <div class="folio" data-reveal><b>01</b><span>Portfolio</span><span>Elegance Ivy</span></div>
+    <div class="section-head">
+      <h2 class="h2" data-reveal>Recent<br><em>projects</em></h2>
+    </div>
+    <div data-project-cards="all"></div>
+  </div>
 </section>
 
-<section class="cta-band">
+<section class="cta-image">
+  <picture><source media="(max-width: 767px)" srcset="/images/projects/odyssey-lodge/02-sm.jpg"><img src="/images/projects/odyssey-lodge/02.jpg" alt="" loading="lazy" decoding="async"></picture>
   <div class="wrap">
-    <h2 class="display" data-reveal>Discuss your project with us.</h2>
-    <a class="btn btn-gold" href="/contact">Start a project <span>&#8594;</span></a>
+    <span class="eyebrow" data-reveal style="color:var(--brass)">Begin</span>
+    <h2 class="display" data-reveal style="margin-top:22px">Discuss your project <em>with us.</em></h2>
+    <div class="cta-row" data-reveal>
+      <a class="btn btn-gold" href="/contact">Start a project <span>&#8594;</span></a>
+    </div>
   </div>
 </section>
 </main>

@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="/css/base.css?v=2">
 <link rel="stylesheet" href="/css/layout.css?v=2">
 <link rel="stylesheet" href="/css/components.css?v=2">
+<link rel="stylesheet" href="/css/pages.css?v=2">
 <script>document.documentElement.classList.add('js')</script>
 <script src="/js/data.js?v=2" defer></script>
 <script src="/js/layout.js?v=2" defer></script>
@@ -36,34 +37,60 @@
   <div class="page-hero-inner">
     <a class="back" href="/" data-back><span>&#8592;</span> Back</a>
     <div class="crumbs"><a href="/">Home</a><span class="sep">/</span>Videos</div>
-    <h1 class="h1">Watch our work</h1>
+    <h1 class="h1">Watch our <em>work</em></h1>
     <p class="lead">Walkthroughs, progress updates and finished spaces. More videos open on our Facebook page.</p>
   </div>
 </section>
 
-<section class="section-sm rule-bottom">
-  <div class="wrap split crew">
-    <div>
-      <div class="eyebrow" data-reveal>Behind the scenes</div>
-      <h2 class="h2-sm crew-title" data-reveal>Meet the crew behind the build</h2>
-      <p class="body crew-text" data-reveal>Every Elegance Ivy project is built by our own skilled site team. Watch them at work on a live site, taking care over every detail.</p>
+<section class="section">
+  <div class="wrap">
+    <div class="folio" data-reveal><b>01</b><span>Films</span><span>Elegance Ivy</span></div>
+    <div class="page-head">
+      <h2 class="h2" data-reveal>On site,<br><em>on film</em></h2>
+      <div data-reveal>
+        <p class="body">Every Elegance Ivy project is built by our own skilled site team. Watch them at work on a live site, taking care over every detail.</p>
+      </div>
     </div>
-    <div class="crew-video" data-reveal>
-      <video controls playsinline preload="none" width="720" height="1280" poster="/images/videos/builder-crew-poster.jpg" aria-label="Elegance Ivy site crew at work (45 seconds)">
-        <source src="/videos/builder-crew.mp4" type="video/mp4">
-      </video>
+    <div class="films page-films">
+      <figure class="film" data-reveal>
+        <div class="crew-video" data-label="Karanda Mission Hospital maternity ward">
+          <video controls playsinline preload="none" width="720" height="1280" poster="/images/videos/karanda-maternity-poster.jpg" aria-label="Karanda Mission Hospital maternity ward, by Elegance Ivy (49 seconds)">
+            <source src="/videos/karanda-maternity.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption><span class="num">01</span><b>Karanda Mission Hospital</b><span>Maternity ward, from site to finished rooms</span></figcaption>
+      </figure>
+      <figure class="film" data-reveal>
+        <div class="crew-video" data-label="meet the crew behind the build">
+          <video controls playsinline preload="none" width="720" height="1280" poster="/images/videos/builder-crew-poster.jpg" aria-label="Elegance Ivy site crew at work (45 seconds)">
+            <source src="/videos/builder-crew.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption><span class="num">02</span><b>Meet the crew behind the build</b><span>Our own skilled site team on a live site</span></figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<section class="section-sm">
-  <div class="wrap" data-video-cards="all"></div>
+<section class="section tone-paper">
+  <div class="wrap">
+    <div class="folio" data-reveal><b>02</b><span>Facebook</span><span>Elegance Ivy</span></div>
+    <div class="page-head">
+      <h2 class="h2" data-reveal>On <em>Facebook</em></h2>
+      <p class="body" data-reveal>Walkthroughs, progress updates and finished spaces. More videos open on our Facebook page.</p>
+    </div>
+    <div data-video-cards="all"></div>
+  </div>
 </section>
 
-<section class="cta-band">
+<section class="cta-image">
+  <picture><source media="(max-width: 767px)" srcset="/images/projects/odyssey-lodge/04-sm.jpg"><img src="/images/projects/odyssey-lodge/04.jpg" alt="" loading="lazy" decoding="async"></picture>
   <div class="wrap">
-    <h2 class="display" data-reveal>Follow our projects on Facebook.</h2>
-    <a class="btn btn-gold" href="https://www.facebook.com/EleganceIvyInteriorDesigners/" target="_blank" rel="noopener">Visit our Facebook page <span>&#8594;</span></a>
+    <span class="eyebrow" data-reveal style="color:var(--brass)">Follow</span>
+    <h2 class="display" data-reveal style="margin-top:22px">Follow our projects <em>on Facebook.</em></h2>
+    <div class="cta-row" data-reveal>
+      <a class="btn btn-gold" href="https://www.facebook.com/EleganceIvyInteriorDesigners/" target="_blank" rel="noopener">Visit our Facebook page <span>&#8594;</span></a>
+    </div>
   </div>
 </section>
 </main>

@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="/css/base.css?v=2">
 <link rel="stylesheet" href="/css/layout.css?v=2">
 <link rel="stylesheet" href="/css/components.css?v=2">
+<link rel="stylesheet" href="/css/pages.css?v=2">
 <script>document.documentElement.classList.add('js')</script>
 <script src="/js/data.js?v=2" defer></script>
 <script src="/js/layout.js?v=2" defer></script>
@@ -36,46 +37,54 @@
   <div class="page-hero-inner">
     <a class="back" href="/projects" data-back><span>&#8592;</span> All projects</a>
     <div class="crumbs"><a href="/">Home</a><span class="sep">/</span><a href="/projects">Projects</a><span class="sep">/</span>Sunway City</div>
-    <h1 class="h1">Sunway City</h1>
+    <h1 class="h1">Sunway <em>City</em></h1>
     <p class="lead">A residential build with boundary walls, paving and landscaping.</p>
   </div>
 </section>
 
-<section class="rule-bottom" style="padding:clamp(40px,6vh,80px) 0">
+<section class="section tone-paper">
   <div class="wrap">
-    <div class="tiles tiles-sm">
+    <div class="folio" data-reveal><b>01</b><span>The project</span><span>Elegance Ivy</span></div>
+    <div class="tiles tiles-sm" data-stagger>
       <div data-reveal><div class="tile-label">Project</div><div class="tile-value">Sunway City</div></div>
       <div data-reveal><div class="tile-label">Sector</div><div class="tile-value">Residential</div></div>
       <div data-reveal><div class="tile-label">Scope</div><div class="tile-value">Construction &amp; landscaping</div></div>
       <div data-reveal><div class="tile-label">Photos</div><div class="tile-value">15</div></div>
     </div>
-  </div>
-</section>
-
-<section class="section-sm">
-  <div class="wrap text-block">
-    <div class="eyebrow" data-reveal>Overview</div>
-    <div class="paras" data-reveal>
+    <div class="text-block block-gap">
+      <h2 class="h2-sm" data-reveal>Project <em>overview</em></h2>
+      <div class="paras" data-reveal>
       <p>A residential project in Sunway City covering the house, boundary walls, paving and landscaping.</p>
       <p>The photos follow the site from groundworks through to the finished paving and planted beds.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section-sm" style="padding-top:0">
-  <div class="wrap" data-project-gallery="sunway-city"></div>
+<section class="section">
+  <div class="wrap">
+    <div class="folio" data-reveal><b>02</b><span>Photographs</span><span>Elegance Ivy</span></div>
+    <div class="section-head">
+      <h2 class="h2" data-reveal>The <em>gallery</em></h2>
+    </div>
+    <div data-project-gallery="sunway-city"></div>
+  </div>
 </section>
 
-<section class="rule-top" style="padding:clamp(40px,6vh,72px) 0">
-  <div class="wrap section-head" style="margin:0">
-    <a class="back" href="/projects" data-back style="margin:0"><span>&#8592;</span> All projects</a>
-    <a class="link-arrow" href="/projects/bindura-labour-ward" data-underline>Next project: Bindura Labour Ward &#8594;</a>
+<section class="section-sm rule-top">
+  <div class="wrap">
+    <div class="folio" data-reveal><b>03</b><span>Continue</span><span>Elegance Ivy</span></div>
+    <nav class="pager" aria-label="More projects" data-reveal>
+      <a href="/projects/odyssey-lodge"><span class="eyebrow"><span aria-hidden="true">&#8592;</span> Previous project</span><b>Odyssey Lodge</b></a>
+      <a href="/projects/bindura-labour-ward"><span class="eyebrow">Next project <span aria-hidden="true">&#8594;</span></span><b>Bindura Labour Ward</b></a>
+    </nav>
+    <div class="pager-foot"><a class="back" href="/projects" data-back style="margin:0"><span>&#8592;</span> All projects</a></div>
   </div>
 </section>
 
 <section class="cta-band">
   <div class="wrap">
-    <h2 class="display" data-reveal>Discuss your project.</h2>
+    <h2 class="display" data-reveal>Discuss your <em>project.</em></h2>
     <a class="btn btn-gold" href="/contact">Start a project <span>&#8594;</span></a>
   </div>
 </section>

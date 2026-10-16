@@ -54,14 +54,14 @@
   --surface: var(--bone);
   --fg: #1A1611;
   --fg-2: rgba(26, 22, 17, .74);
-  --fg-3: rgba(26, 22, 17, .56);
+  --fg-3: rgba(26, 22, 17, .66);
   --rule: rgba(26, 22, 17, .14);
   --rule-strong: rgba(26, 22, 17, .3);
   --accent: var(--brass-deep);
   --accent-ink: var(--ivory);
   --danger: #9E3F1B;
 }
-.tone-stone { --bg: var(--stone); --surface: #E6DCCD; --fg-3: rgba(26, 22, 17, .62); }
+.tone-stone { --bg: var(--stone); --surface: #E6DCCD; --fg-3: rgba(26, 22, 17, .74); --accent: #634821; }
 .tone-dark { --bg: var(--espresso); }
 .tone-paper, .tone-stone, .tone-dark { background: var(--bg); color: var(--fg); }
 

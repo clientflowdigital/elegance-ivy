@@ -106,7 +106,7 @@
 
 /* ---------- CTA band: an ivory closing page ---------- */
 .cta-band {
-  --bg: var(--stone); --fg: #1A1611; --fg-2: rgba(26,22,17,.74); --rule: rgba(26,22,17,.14); --accent: var(--brass-deep); --accent-ink: var(--ivory);
+  --bg: var(--stone); --fg: #1A1611; --fg-2: rgba(26,22,17,.74); --rule: rgba(26,22,17,.14); --accent: #634821; --accent-ink: var(--ivory);
   background: var(--bg); color: var(--fg); padding: clamp(80px, 14vh, 170px) 0;
 }
 .cta-band .wrap { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: clamp(28px, 4vw, 60px); }

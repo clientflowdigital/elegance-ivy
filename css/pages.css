@@ -1,0 +1,96 @@
+/* ==========================================================================
+   Inner pages: compositions that home.css provides for the home page only
+   (chapter openings, background plates, the films column), plus the
+   mission/vision spread, the leadership line, the six-reason principles grid
+   and the previous/next project pager.
+   Colours come only from the semantic tokens, so everything works on the
+   dark default and on .tone-paper / .tone-stone.
+   ========================================================================== */
+
+/* ---------- Chapter head: heading left, lead or note right ---------- */
+.page-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 96px); align-items: end; margin-bottom: clamp(44px, 7vh, 88px); }
+.page-head > :last-child:not(:first-child) { justify-self: end; }
+.page-head .link-arrow { display: inline-block; margin-top: 24px; }
+@media (max-width: 760px) {
+  .page-head { grid-template-columns: minmax(0, 1fr); }
+  .page-head > :last-child:not(:first-child) { justify-self: start; }
+}
+
+/* ---------- Opening page with a monogram drop cap (About) ---------- */
+.opening { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(28px, 6vw, 120px); align-items: start; }
+.opening-aside { display: flex; flex-direction: column; gap: 22px; }
+.opening-aside .eyebrow { color: var(--fg-3); }
+.opening .h2-sm { max-width: 18ch; }
+.opening-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: clamp(20px, 3vw, 48px); margin-top: clamp(32px, 5vh, 56px); }
+.opening-cols p { font-size: 15.5px; line-height: 1.85; color: var(--fg-2); }
+.opening-cols p:first-child { grid-column: 1 / -1; font-family: var(--display); font-size: clamp(21px, 1.9vw, 30px); line-height: 1.4; color: var(--fg); max-width: 40ch; }
+@media (max-width: 860px) {
+  .opening { grid-template-columns: minmax(0, 1fr); }
+  .opening-aside { flex-direction: row; align-items: flex-end; }
+  .opening-aside .dropcap { font-size: 120px; }
+}
+
+/* Pictures beside the list of disciplines */
+.disciplines { margin-top: clamp(64px, 11vh, 140px); align-items: center; }
+.disciplines .ruled-list { margin-top: 0; }
+
+/* ---------- Mission and vision: a two-page spread ---------- */
+.mv { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--rule-strong); }
+.mv > div { padding: clamp(32px, 5vh, 60px) clamp(20px, 4vw, 72px) clamp(32px, 5vh, 60px) 0; }
+.mv > div + div { padding-left: clamp(20px, 4vw, 72px); padding-right: 0; border-left: 1px solid var(--rule); }
+.mv h3 { margin-top: clamp(22px, 4vh, 40px); font-family: var(--display); font-weight: 400; font-size: clamp(28px, 3vw, 50px); line-height: 1.06; }
+.mv p { margin-top: clamp(20px, 3vh, 32px); font-family: var(--display); font-size: clamp(19px, 1.55vw, 25px); line-height: 1.55; color: var(--fg-2); max-width: 34ch; text-wrap: pretty; }
+@media (max-width: 760px) {
+  .mv { grid-template-columns: minmax(0, 1fr); }
+  .mv > div { padding-right: 0; }
+  .mv > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--rule); }
+}
+
+/* Leadership line, like a signature at the foot of a page */
+.leader { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px clamp(28px, 5vw, 96px); align-items: end; margin-top: clamp(56px, 9vh, 110px); padding-top: clamp(24px, 4vh, 36px); border-top: 1px solid var(--rule-strong); }
+.leader .tile-label { grid-column: 1 / -1; }
+.leader-name { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 3.6vw, 60px); line-height: 1.02; text-transform: uppercase; letter-spacing: .02em; }
+.leader-name em { display: block; margin-top: 10px; font-style: italic; text-transform: none; letter-spacing: 0; font-size: .5em; color: var(--accent); }
+@media (max-width: 760px) { .leader { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Six principles in two rows of three ---------- */
+@media (min-width: 900px) {
+  .principles-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .principles-6 .principle:nth-child(3n+1) { padding-left: 0; border-left: 0; }
+}
+@media (max-width: 899px) {
+  .principles-6 { grid-template-columns: minmax(0, 1fr); }
+  .principles-6 .principle { padding-left: 0; padding-right: 0; }
+}
+
+/* ---------- Full-bleed background plate ---------- */
+.plate { min-height: clamp(560px, 100vh, 980px); display: flex; align-items: center; }
+.plate .wrap { width: 100%; text-align: center; display: flex; flex-direction: column; align-items: center; gap: clamp(22px, 4vh, 40px); }
+.plate .statement { max-width: 24ch; font-size: clamp(30px, 4.2vw, 68px); line-height: 1.16; }
+.plate .statement em { color: var(--brass); }
+
+/* ---------- Films column (Videos) ---------- */
+.page-films { max-width: 760px; margin-left: auto; }
+
+/* ---------- Previous / next project ---------- */
+.pager { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule); }
+.pager a { display: flex; flex-direction: column; gap: clamp(16px, 3vh, 28px); padding: clamp(32px, 6vh, 72px) clamp(16px, 3vw, 48px) clamp(32px, 6vh, 72px) 0; color: var(--fg); }
+.pager a + a { align-items: flex-end; text-align: right; padding-left: clamp(16px, 3vw, 48px); padding-right: 0; border-left: 1px solid var(--rule); }
+.pager b { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 4.6vw, 80px); line-height: .98; text-transform: uppercase; letter-spacing: .01em; overflow-wrap: anywhere; transition: color .4s ease, transform .7s var(--ease); }
+.pager a:hover b, .pager a:focus-visible b { color: var(--accent); }
+.pager a:first-child:hover b { transform: translateX(-10px); }
+.pager a + a:hover b { transform: translateX(10px); }
+.pager-foot { margin-top: clamp(28px, 5vh, 48px); }
+@media (max-width: 640px) {
+  .pager { grid-template-columns: minmax(0, 1fr); }
+  .pager a, .pager a + a { padding-left: 0; padding-right: 0; }
+  .pager a + a { border-left: 0; border-top: 1px solid var(--rule); }
+}
+
+/* ---------- Article (Journal) ---------- */
+.article-wrap { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(28px, 6vw, 120px); align-items: start; }
+.article-wrap .ornament { margin-top: 18px; }
+@media (max-width: 860px) { .article-wrap { grid-template-columns: minmax(0, 1fr); } }
+
+/* Gap between stacked blocks inside one page */
+.block-gap { margin-top: clamp(56px, 9vh, 120px); }

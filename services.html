@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="/css/base.css?v=2">
 <link rel="stylesheet" href="/css/layout.css?v=2">
 <link rel="stylesheet" href="/css/components.css?v=2">
+<link rel="stylesheet" href="/css/pages.css?v=2">
 <script>document.documentElement.classList.add('js')</script>
 <script src="/js/data.js?v=2" defer></script>
 <script src="/js/layout.js?v=2" defer></script>
@@ -32,23 +33,33 @@
 <body data-page="services">
 <main id="main">
 <section class="page-hero">
-  <picture><source media="(max-width: 767px)" srcset="/images/projects/construction-in-progress/01-sm.jpg"><img src="/images/projects/construction-in-progress/01.jpg" alt="" fetchpriority="high"></picture>
+  <picture><source media="(max-width: 767px)" srcset="/images/projects/odyssey-lodge/02-sm.jpg"><img src="/images/projects/odyssey-lodge/02.jpg" alt="" fetchpriority="high"></picture>
   <div class="page-hero-inner">
     <a class="back" href="/" data-back><span>&#8592;</span> Back</a>
     <div class="crumbs"><a href="/">Home</a><span class="sep">/</span>Services</div>
-    <h1 class="h1">Our services</h1>
+    <h1 class="h1">Our <em>services</em></h1>
     <p class="lead">A fully rounded construction and interior design service for commercial, hospitality and residential clients.</p>
   </div>
 </section>
 
-<section class="section-sm">
-  <div data-service-rows></div>
+<section class="section tone-paper">
+  <div class="wrap">
+    <div class="folio" data-reveal><b>01</b><span>Contents</span><span>Elegance Ivy</span></div>
+    <div class="section-head">
+      <h2 class="h2" data-reveal>What<br><em>we do</em></h2>
+    </div>
+    <div data-service-rows></div>
+  </div>
 </section>
 
-<section class="cta-band">
+<section class="cta-image">
+  <picture><source media="(max-width: 767px)" srcset="/images/feature/pavilion-sm.jpg"><img src="/images/feature/pavilion.jpg" alt="" loading="lazy" decoding="async"></picture>
   <div class="wrap">
-    <h2 class="display" data-reveal>Tell us about your next project.</h2>
-    <a class="btn btn-gold" href="/contact">Start a project <span>&#8594;</span></a>
+    <span class="eyebrow" data-reveal style="color:var(--brass)">Begin</span>
+    <h2 class="display" data-reveal style="margin-top:22px">Tell us about your <em>next project.</em></h2>
+    <div class="cta-row" data-reveal>
+      <a class="btn btn-gold" href="/contact">Start a project <span>&#8594;</span></a>
+    </div>
   </div>
 </section>
 </main>

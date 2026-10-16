@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="/css/base.css?v=2">
 <link rel="stylesheet" href="/css/layout.css?v=2">
 <link rel="stylesheet" href="/css/components.css?v=2">
+<link rel="stylesheet" href="/css/pages.css?v=2">
 <script>document.documentElement.classList.add('js')</script>
 <script src="/js/data.js?v=2" defer></script>
 <script src="/js/layout.js?v=2" defer></script>
@@ -36,39 +37,54 @@
   <div class="page-hero-inner">
     <a class="back" href="/services" data-back><span>&#8592;</span> All services</a>
     <div class="crumbs"><a href="/">Home</a><span class="sep">/</span><a href="/services">Services</a><span class="sep">/</span>Hospitality Construction</div>
-    <h1 class="h1">Hospitality Construction</h1>
+    <h1 class="h1">Hospitality <em>Construction</em></h1>
     <p class="lead">Hotels and lodges: construction and interior designing under one roof.</p>
   </div>
 </section>
-<section class="section-sm">
-  <div class="wrap text-block">
-    <div class="eyebrow" data-reveal>Scope</div>
-    <div class="paras" data-reveal>
+
+<section class="section tone-paper">
+  <div class="wrap">
+    <div class="folio" data-reveal><b>01</b><span>Scope</span><span>Elegance Ivy</span></div>
+    <div class="text-block">
+      <h2 class="h2-sm" data-reveal>The <em>scope</em></h2>
+      <div class="paras" data-reveal>
       <p>We offer a fully rounded construction and interior design service to hospitality clients, from the structure through to finishes, fittings and furnishing.</p>
       <p>Completed hospitality work includes Odyssey Lodge.</p>
       <p>Every engagement is run as a one-off: bespoke, tailor-made and delivered with our trademark attention to detail from the conceptual stages to the finished product and beyond.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section-sm" style="padding-top:0">
-  <div class="wrap" data-photos="odyssey-lodge/02,odyssey-lodge/03,odyssey-lodge/05,odyssey-lodge/04" data-label="Our work"></div>
+<section class="section">
+  <div class="wrap">
+    <div class="folio" data-reveal><b>02</b><span>Our work</span><span>Elegance Ivy</span></div>
+    <div class="section-head">
+      <h2 class="h2" data-reveal>Our <em>work</em></h2>
+    </div>
+    <div data-photos="odyssey-lodge/02,odyssey-lodge/03,odyssey-lodge/05,odyssey-lodge/04" data-feature></div>
+  </div>
 </section>
 
-<section class="section-sm rule-top">
+<section class="section tone-stone">
   <div class="wrap">
-    <div class="section-head" data-reveal>
-      <div><span class="eyebrow">Related</span><h2 class="h2-sm">Projects</h2></div>
+    <div class="folio" data-reveal><b>03</b><span>Related</span><span>Elegance Ivy</span></div>
+    <div class="section-head">
+      <h2 class="h2" data-reveal>Related<br><em>projects</em></h2>
       <a class="link-arrow" href="/services/interior-design" data-underline>Next service: Interior Designing &#8594;</a>
     </div>
     <div data-project-cards="odyssey-lodge"></div>
   </div>
 </section>
 
-<section class="cta-band">
+<section class="cta-image">
+  <picture><source media="(max-width: 767px)" srcset="/images/feature/pavilion-sm.jpg"><img src="/images/feature/pavilion.jpg" alt="" loading="lazy" decoding="async"></picture>
   <div class="wrap">
-    <h2 class="display" data-reveal>Discuss your project with us.</h2>
-    <a class="btn btn-gold" href="/contact">Start a project <span>&#8594;</span></a>
+    <span class="eyebrow" data-reveal style="color:var(--brass)">Begin</span>
+    <h2 class="display" data-reveal style="margin-top:22px">Discuss your project <em>with us.</em></h2>
+    <div class="cta-row" data-reveal>
+      <a class="btn btn-gold" href="/contact">Start a project <span>&#8594;</span></a>
+    </div>
   </div>
 </section>
 </main>
