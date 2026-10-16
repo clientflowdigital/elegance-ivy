@@ -50,7 +50,7 @@
 .leader { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px clamp(28px, 5vw, 96px); align-items: end; margin-top: clamp(56px, 9vh, 110px); padding-top: clamp(24px, 4vh, 36px); border-top: 1px solid var(--rule-strong); }
 .leader .tile-label { grid-column: 1 / -1; }
 .leader-name { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 3.6vw, 60px); line-height: 1.02; text-transform: uppercase; letter-spacing: .02em; }
-.leader-name em { display: block; margin-top: 10px; font-style: italic; text-transform: none; letter-spacing: 0; font-size: .5em; color: var(--accent); }
+.leader-name em { display: block; margin-top: 10px; font-family: var(--script); font-style: italic; text-transform: none; letter-spacing: 0; font-size: .5em; color: var(--accent); }
 @media (max-width: 760px) { .leader { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- Six principles in two rows of three ---------- */

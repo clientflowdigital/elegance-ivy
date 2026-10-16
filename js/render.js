@@ -3,7 +3,8 @@
 
    <div data-service-rows></div>                     all services as rows
    <div data-project-cards="all|3|slug,slug"></div>  project cards
-   <div data-project-spreads="slug,slug"></div>      large editorial project spreads
+   <div data-project-showcase="slug,slug"></div>     horizontal project panels (home)
+   <div data-client-marquee></div>                   moving client logo strip (home)
    <div data-project-gallery="slug"></div>           selected + full gallery
    <div data-photos="slug/01,slug/04"></div>         a small photo grid
    <div data-gallery-browser></div>                  filterable gallery (all projects)
@@ -58,23 +59,29 @@
     el.innerHTML = list.map(projectCard).join('');
   });
 
-  /* ---------- Project spreads: image and text side by side, alternating ---------- */
-  each('[data-project-spreads]', (el) => {
-    const list = el.dataset.projectSpreads.split(',').map((s) => EI.findProject(s.trim())).filter(Boolean);
-    el.classList.add('spreads');
+  /* ---------- Project showcase: horizontal panels (home); pinned by js/motion.js ---------- */
+  each('[data-project-showcase]', (el) => {
+    const list = el.dataset.projectShowcase.split(',').map((s) => EI.findProject(s.trim())).filter(Boolean);
     el.innerHTML = list.map((p, i) => {
       const cover = EI.photo(p.slug + '/' + (p.cover || '01'));
-      return '<a class="spread" href="/projects/' + p.slug + '" data-card>' +
-        '<div class="spread-media" data-clip><img data-zoom src="' + cover.full + '" srcset="' + cover.src + ' 900w, ' + cover.full + ' 2000w" sizes="(max-width: 820px) 100vw, 58vw" alt="' + esc(p.title) + ' by Elegance Ivy" loading="lazy" decoding="async"></div>' +
-        '<div class="spread-text" data-reveal>' +
-          '<span class="spread-num" aria-hidden="true">' + EI.pad(i + 1) + '</span>' +
-          '<span class="eyebrow">' + esc(p.type) + '</span>' +
-          '<h3>' + esc(p.title) + '</h3>' +
-          '<p>' + esc(p.summary) + '</p>' +
-          '<div class="spread-foot"><span>' + p.count + ' photographs</span><span>View project <span class="arrow">&#8594;</span></span></div>' +
-        '</div>' +
+      return '<a class="panel" href="/projects/' + p.slug + '" data-cursor="View">' +
+        '<div class="panel-media"><span class="panel-num" aria-hidden="true">' + EI.pad(i + 1) + '</span>' +
+          '<img src="' + cover.full + '" srcset="' + cover.src + ' 900w, ' + cover.full + ' 2000w" sizes="(max-width: 760px) 90vw, 70vw" alt="' + esc(p.title) + ' by Elegance Ivy" loading="lazy" decoding="async"></div>' +
+        '<div class="panel-text"><span class="eyebrow">' + esc(p.type) + '</span><h3>' + esc(p.title) + '</h3><span class="link-arrow">View project &#8594;</span></div>' +
       '</a>';
-    }).join('');
+    }).join('') +
+      '<a class="panel panel-end" href="/projects"><span class="eyebrow">' + EI.projects.length + ' projects</span><b>Explore all <em>projects</em></b><span class="link-arrow">All projects &#8594;</span></a>';
+    const total = el.closest('[data-showcase]') && el.closest('[data-showcase]').querySelector('[data-showcase-total]');
+    if (total) total.textContent = EI.pad(list.length + 1);
+  });
+
+  /* ---------- Client logos drifting past (home) ---------- */
+  each('[data-client-marquee]', (el) => {
+    const item = (c, hidden) => '<div class="logo-item"' + (hidden ? ' aria-hidden="true"' : '') + '>' +
+      '<img src="/images/clients/' + c.logo + '.png" alt="' + (hidden ? '' : esc(c.name)) + '" width="92" height="92" loading="lazy" decoding="async">' +
+      '<span>' + esc(c.name) + '<small>' + esc(c.scope) + '</small></span></div>';
+    // The list is repeated once so the loop is seamless; the copy is hidden from screen readers.
+    el.innerHTML = '<div class="logo-track">' + EI.clients.map((c) => item(c)).join('') + EI.clients.map((c) => item(c, true)).join('') + '</div>';
   });
 
   /* ---------- Photo grids (lightbox-enabled) ---------- */

@@ -2,7 +2,8 @@
    Base: design tokens, tones, reset, typography, motion
 
    Concept: "The Monograph". The site reads like a printed hotel or
-   architecture book: high-contrast Didone display type, warm espresso and
+   architecture book: classical inscriptional capitals (Marcellus, the same style as the
+   lettering in the logo), italic Cormorant accents, warm espresso and
    ivory pages that alternate, brass hairlines, folio numbers and generous
    margins.
 
@@ -36,8 +37,9 @@
   --danger: #E9A487;
 
   /* Type */
-  --display: 'Bodoni Moda', 'Bodoni 72', Didot, 'Times New Roman', serif;
-  --sans: 'Jost', 'Futura', 'Century Gothic', system-ui, sans-serif;
+  --display: 'Marcellus', 'Trajan Pro', Georgia, serif;
+  --script: 'Cormorant Garamond', 'Cormorant', Georgia, serif;   /* italic accent words */
+  --sans: 'Montserrat', 'Helvetica Neue', Arial, system-ui, sans-serif;
 
   /* Space and motion */
   --ease: cubic-bezier(.16, 1, .3, 1);
@@ -112,22 +114,23 @@ button { cursor: pointer; }
 
 /* ---------- Typography ---------- */
 .display, .h1, .h2, .h2-sm, .h3, .statement, .title-xl {
-  font-family: var(--display); font-weight: 400; font-optical-sizing: auto;
+  font-family: var(--display); font-weight: 400;
 }
 /* Hotel-style capitals: the signature headline treatment */
 .title-xl {
-  font-size: clamp(48px, 8.4vw, 148px); line-height: .92; letter-spacing: .01em; text-transform: uppercase;
+  font-size: clamp(38px, 6.4vw, 112px); line-height: 1.02; letter-spacing: .04em; text-transform: uppercase;
 }
-.h1 { font-size: clamp(40px, 6.8vw, 112px); line-height: .96; letter-spacing: .005em; text-transform: uppercase; max-width: 16ch; text-wrap: balance; }
-.h2 { font-size: clamp(36px, 5.4vw, 92px); line-height: .98; letter-spacing: .008em; text-transform: uppercase; }
-.h2-sm { font-size: clamp(30px, 3.8vw, 60px); line-height: 1.04; }
-.h3 { font-size: clamp(22px, 2.1vw, 32px); line-height: 1.18; }
-.statement { font-size: clamp(26px, 3.4vw, 54px); line-height: 1.22; max-width: 26ch; text-wrap: pretty; }
+.h1 { font-size: clamp(34px, 5.4vw, 90px); line-height: 1.04; letter-spacing: .04em; text-transform: uppercase; max-width: 18ch; text-wrap: balance; }
+.h2 { font-size: clamp(30px, 4.2vw, 70px); line-height: 1.06; letter-spacing: .04em; text-transform: uppercase; }
+.h2-sm { font-size: clamp(27px, 3vw, 48px); line-height: 1.14; letter-spacing: .01em; }
+.h3 { font-size: clamp(20px, 1.7vw, 27px); line-height: 1.25; letter-spacing: .01em; }
+.statement { font-size: clamp(24px, 2.7vw, 44px); line-height: 1.36; max-width: 28ch; text-wrap: pretty; }
 /* Italic accent words inside headings: <em> */
 .title-xl em, .h1 em, .h2 em, .h2-sm em, .statement em, .display em {
-  font-style: italic; text-transform: none; color: var(--accent); letter-spacing: -.005em;
+  font-family: var(--script); font-style: italic; font-weight: 500; font-size: 1.14em; line-height: .9;
+  text-transform: none; color: var(--accent); letter-spacing: 0;
 }
-.eyebrow { display: inline-block; font-size: 11px; letter-spacing: .34em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+.eyebrow { display: inline-block; font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
 .num { font-family: var(--display); font-size: 15px; letter-spacing: .04em; color: var(--accent); font-variant-numeric: lining-nums; }
 .body { font-size: clamp(15px, 1.06vw, 17px); line-height: 1.8; color: var(--fg-2); max-width: 58ch; }
 .body + .body { margin-top: 18px; }
@@ -174,6 +177,38 @@ button { cursor: pointer; }
 .js [data-rise] img { transform: scale(1.06); transition: transform 1.8s var(--ease); }
 .js [data-rise].in img { transform: scale(1); }
 
+/* Headlines rise into focus. (Not a clip: a fully clipped element never
+   reports as visible, so it would never reveal.) */
+.js .h1[data-reveal], .js .h2[data-reveal], .js .title-xl[data-reveal], .js .statement[data-reveal] {
+  transform: translateY(54px) skewY(2.5deg); filter: blur(8px); transform-origin: left top;
+  transition: opacity 1.2s var(--ease), transform 1.4s var(--ease), filter 1.2s var(--ease);
+}
+.js .h1[data-reveal].in, .js .h2[data-reveal].in, .js .title-xl[data-reveal].in, .js .statement[data-reveal].in { transform: none; filter: none; }
+
+/* Curtain reveal for feature photos: a brass panel sweeps across, then the photo settles in */
+.js [data-curtain] { position: relative; overflow: hidden; }
+.js [data-curtain]::after { content: ""; position: absolute; inset: 0; z-index: 4; background: var(--brass); transform: scaleX(0); transform-origin: left; pointer-events: none; }
+.js [data-curtain] > img { opacity: 0; transform: scale(1.18); }
+.js [data-curtain].in::after { animation: curtain 1.4s cubic-bezier(.77, 0, .18, 1) forwards; }
+.js [data-curtain].in > img { opacity: 1; transform: scale(1); transition: opacity .01s linear .7s, transform 2s var(--ease) .7s; }
+@keyframes curtain {
+  0% { transform: scaleX(0); transform-origin: left; }
+  48% { transform: scaleX(1); transform-origin: left; }
+  52% { transform: scaleX(1); transform-origin: right; }
+  100% { transform: scaleX(0); transform-origin: right; }
+}
+
+/* "View" cursor that follows the mouse over projects (js/motion.js) */
+.cursor {
+  position: fixed; left: 0; top: 0; z-index: 95; pointer-events: none;
+  width: 92px; height: 92px; margin: -46px 0 0 -46px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(190,156,99,.92); color: var(--espresso);
+  font-size: 10.5px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase;
+  opacity: 0; scale: .3; transition: opacity .35s ease, scale .5s var(--ease);
+}
+.cursor.on { opacity: 1; scale: 1; }
+
 [data-stagger] > *:nth-child(2) { transition-delay: 90ms; }
 [data-stagger] > *:nth-child(3) { transition-delay: 180ms; }
 [data-stagger] > *:nth-child(4) { transition-delay: 270ms; }
@@ -205,6 +240,9 @@ main { animation: pageIn .6s var(--ease); }
   *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; transition-delay: 0ms !important; }
   .js [data-reveal], .js [data-rise] img { opacity: 1; transform: none; }
   .js [data-clip] > * { clip-path: none; }
+  .js .h1[data-reveal], .js .h2[data-reveal], .js .title-xl[data-reveal], .js .statement[data-reveal] { filter: none; transform: none; }
+  .js [data-curtain] > img { opacity: 1; transform: none; }
+  .js [data-curtain]::after { display: none; }
   [data-hero-in], [data-menu-item] { opacity: 1 !important; transform: none !important; }
   html { scroll-behavior: auto; }
 }

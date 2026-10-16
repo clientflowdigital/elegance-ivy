@@ -19,29 +19,35 @@
     { id: 'journal', label: 'Journal', href: '/journal' },
     { id: 'contact', label: 'Contact', href: '/contact' }
   ];
-  const DESK = ['about', 'services', 'projects', 'gallery', 'videos', 'team', 'contact'];
+  const LEFT = ['about', 'services', 'projects'];
+  const RIGHT = ['gallery', 'contact'];
   const cur = (id) => (id === page ? ' aria-current="page"' : '');
 
   const WA_ICON = '<svg viewBox="0 0 32 32" width="30" height="30" fill="#0A0A09" aria-hidden="true"><path d="M16.04 4C9.4 4 4 9.4 4 16.04c0 2.12.55 4.19 1.6 6.02L4 28l6.1-1.6a12 12 0 005.94 1.55h.01C22.69 27.95 28.09 22.55 28.09 15.9c0-3.21-1.25-6.23-3.52-8.5A11.94 11.94 0 0016.04 4zm0 21.9h-.01a9.97 9.97 0 01-5.08-1.39l-.36-.22-3.77.99 1.01-3.68-.24-.38a9.93 9.93 0 01-1.52-5.29c0-5.5 4.48-9.98 9.98-9.98 2.67 0 5.17 1.04 7.06 2.93a9.9 9.9 0 012.92 7.06c0 5.5-4.48 9.96-9.99 9.96zm5.48-7.46c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.41-1.49-.89-.79-1.49-1.77-1.67-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.38-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.09 4.49.71.31 1.27.49 1.7.63.71.23 1.36.19 1.88.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg>';
 
-  // Crest from the logo plus a typeset wordmark, so the name stays sharp at any size.
+  // The client's own logo, used as supplied.
   const BRAND =
     '<a class="brand" href="/" aria-label="Elegance Ivy home">' +
-      '<img src="/images/brand/mark.png" alt="" width="44" height="44">' +
-      '<span class="wordmark" aria-hidden="true"><b>Elegance Ivy</b><small>Construction &amp; Interior Design</small></span>' +
+      '<img src="/images/brand/logo-light.png" alt="Elegance Ivy Construction and Interior Design" width="372" height="168">' +
     '</a>';
+  const PHONE_ICON = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>';
+  const links = (ids) => NAV.filter((n) => ids.includes(n.id)).map((n) => '<a href="' + n.href + '" data-underline' + cur(n.id) + '>' + n.label + '</a>').join('');
 
   /* ---------- Header + menu ---------- */
   const header = document.createElement('header');
   header.className = 'site-header';
   header.innerHTML =
     '<div class="header-bar">' +
+      '<div class="hdr-side">' +
+        '<button class="burger" type="button" aria-expanded="false" aria-controls="site-menu"><i></i><span>Menu</span></button>' +
+        '<nav class="desk-nav" aria-label="Main">' + links(LEFT) + '</nav>' +
+      '</div>' +
       BRAND +
-      '<nav class="desk-nav" aria-label="Main">' +
-        NAV.filter((n) => DESK.includes(n.id)).map((n) => '<a href="' + n.href + '" data-underline' + cur(n.id) + '>' + n.label + '</a>').join('') +
-        '<a class="btn btn-outline-gold" href="/contact">Enquire <span>&#8594;</span></a>' +
-      '</nav>' +
-      '<button class="burger" type="button" aria-expanded="false" aria-controls="site-menu"><i></i>Menu</button>' +
+      '<div class="hdr-side hdr-right">' +
+        '<nav class="desk-nav" aria-label="More">' + links(RIGHT) + '</nav>' +
+        '<a class="hdr-call" href="tel:' + S.phones[0].tel + '" aria-label="Call ' + S.phones[0].label + '">' + PHONE_ICON + '</a>' +
+        '<a class="btn-cta" href="/contact"><span>Book a consultation</span></a>' +
+      '</div>' +
     '</div>';
 
   const menu = document.createElement('div');
@@ -53,11 +59,12 @@
   menu.setAttribute('aria-label', 'Site menu');
   menu.innerHTML =
     '<div class="menu-main">' +
-      '<div class="menu-top">' + BRAND +
-        '<button class="burger" type="button" data-close style="display:flex">Close</button></div>' +
+      '<div class="menu-top">' +
+        '<button class="burger is-close" type="button" data-close><i></i><span>Close</span></button>' + BRAND + '</div>' +
       '<nav class="menu-list" aria-label="Site">' +
         NAV.map((n, i) => '<a href="' + n.href + '" style="animation-delay:' + (0.06 + i * 0.04).toFixed(2) + 's"' + cur(n.id) + '>' + n.label + '<span>' + EI.pad(i + 1) + '</span></a>').join('') +
       '</nav>' +
+      '<a class="btn-cta menu-cta" href="/contact"><span>Book a consultation</span></a>' +
       '<div class="menu-contact">' +
         '<a href="mailto:' + S.email + '">' + S.email + '</a>' +
         '<a href="tel:' + S.phones[0].tel + '">' + S.phones[0].label + '</a>' +
@@ -105,7 +112,15 @@
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
-  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 60);
+  // Solid after the hero starts to scroll; tucks away while reading down, returns on scroll up.
+  let lastY = window.scrollY;
+  const onScroll = () => {
+    const y = window.scrollY;
+    header.classList.toggle('scrolled', y > 60);
+    if (y > 500 && y > lastY + 4 && menu.hidden) header.classList.add('tucked');
+    else if (y < lastY - 4 || y <= 500) header.classList.remove('tucked');
+    lastY = y;
+  };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
@@ -115,9 +130,9 @@
   footer.innerHTML =
     '<div class="wrap">' +
       '<div class="footer-mark">' +
-        '<img src="/images/brand/mark.png" alt="" width="64" height="64" loading="lazy">' +
-        '<div class="footer-word">Elegance Ivy</div>' +
-        '<p>Construction &amp; Interior Design</p>' +
+        '<img src="/images/brand/logo-light.png" alt="Elegance Ivy Construction and Interior Design" width="372" height="168" loading="lazy">' +
+        '<p class="footer-tag">Your dream is our blueprint.</p>' +
+        '<a class="btn-cta" href="/contact"><span>Book a consultation</span></a>' +
       '</div>' +
       '<div class="footer-grid">' +
         '<div>' +

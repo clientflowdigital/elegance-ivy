@@ -18,7 +18,7 @@
 <link rel="apple-touch-icon" href="/images/brand/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="/css/base.css?v=2">
 <link rel="stylesheet" href="/css/layout.css?v=2">
 <link rel="stylesheet" href="/css/components.css?v=2">
@@ -50,25 +50,34 @@
 <script src="/js/motion.js?v=2" defer></script>
 <script src="/js/lightbox.js?v=2" defer></script>
 <script src="/js/testimonials.js?v=2" defer></script>
+<script src="/js/loader.js?v=2" defer></script>
 </head>
 <body data-page="home">
+<div class="loader" aria-hidden="true">
+  <div class="loader-panel loader-top"></div>
+  <div class="loader-panel loader-bottom"></div>
+  <div class="loader-inner">
+    <img src="/images/brand/logo-light.png" alt="" width="372" height="168">
+    <i class="loader-line"></i>
+    <span>Your dream is our blueprint</span>
+  </div>
+</div>
 <main id="main">
 <section class="hero">
   <div class="hero-media">
     <video data-hero-video data-src="/videos/elegance-ivy-hero.mp4" muted loop playsinline preload="none" poster="/images/brand/hero-poster.jpg" disablepictureinpicture disableremoteplayback tabindex="-1" aria-hidden="true"></video>
   </div>
   <div class="hero-shade"></div>
-  <div class="hero-frame" aria-hidden="true"></div>
   <div class="hero-inner">
-    <div class="hero-kicker" data-hero-in style="animation-delay:.1s"><span class="ornament" aria-hidden="true"><i></i></span><span>Construction &amp; Interior Design &middot; Harare</span></div>
+    <div class="hero-kicker" data-hero-in style="--d:.1s"><i aria-hidden="true"></i><span>Construction &amp; Interior Design &middot; Harare</span></div>
     <h1 class="title-xl"><span><span>Your dream,</span></span><span><span><em>is our blueprint.</em></span></span></h1>
-    <p class="hero-lead" data-hero-in style="animation-delay:.8s">Luxury construction and interior design, creating spaces that are functional, elegant and uniquely yours.</p>
-    <div class="btn-row" data-hero-in style="animation-delay:.95s">
-      <a class="btn btn-gold" href="/projects">Explore our work <span>&#8594;</span></a>
-      <a class="btn btn-line" href="/contact">Book a consultation</a>
+    <p class="hero-lead" data-hero-in style="--d:.8s">Luxury construction and interior design, creating spaces that are functional, elegant and uniquely yours.</p>
+    <div class="btn-row" data-hero-in style="--d:.95s">
+      <a class="btn-cta" href="/contact"><span>Book a consultation</span></a>
+      <a class="btn btn-line" href="/projects">Explore our work <span>&#8594;</span></a>
     </div>
   </div>
-  <div class="hero-foot" data-hero-in style="animation-delay:1.15s">
+  <div class="hero-foot" data-hero-in style="--d:1.15s">
     <div class="wrap">
       <ol class="hero-index">
         <li><b>01</b><span>Construction</span></li>
@@ -79,6 +88,13 @@
     </div>
   </div>
 </section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Construction</span><i></i><span>Interior Design</span><i></i><span>3D Modeling</span><i></i><span>Landscaping</span><i></i><span>Finishes</span><i></i>
+    <span>Construction</span><i></i><span>Interior Design</span><i></i><span>3D Modeling</span><i></i><span>Landscaping</span><i></i><span>Finishes</span><i></i>
+  </div>
+</div>
 
 <section class="section tone-paper">
   <div class="wrap">
@@ -95,9 +111,9 @@
           <p>We offer a fully rounded construction and interior design service to commercial, hospitality and residential clients. We specialise in mid to high-end projects, with a strong commitment to excellence and customer satisfaction.</p>
         </div>
         <div class="facts" data-reveal>
-          <div class="fact"><b>90%</b><span>of our clients come to us through referrals</span></div>
-          <div class="fact"><b>07</b><span>disciplines under one roof</span></div>
-          <div class="fact"><b>02</b><span>African awards received in 2024</span></div>
+          <div class="fact"><b data-count="90" data-suffix="%">90%</b><span>of our clients come to us through referrals</span></div>
+          <div class="fact"><b data-count="7" data-pad="2">07</b><span>disciplines under one roof</span></div>
+          <div class="fact"><b data-count="2" data-pad="2">02</b><span>African awards received in 2024</span></div>
         </div>
         <a class="link-arrow" href="/about" data-underline>About the studio &#8594;</a>
       </div>
@@ -114,8 +130,8 @@
       <p class="lead" data-reveal>Every space begins with the people who will live and work in it. We listen first, then design and build with care, so the finished space feels like it could only ever have been yours.</p>
     </div>
     <div class="philosophy-media">
-      <figure data-clip><img src="/images/projects/bathrooms-interiors/03.jpg" srcset="/images/projects/bathrooms-interiors/03-sm.jpg 900w, /images/projects/bathrooms-interiors/03.jpg 1080w" sizes="(max-width: 760px) 100vw, 60vw" alt="Living room designed by Elegance Ivy" loading="lazy" decoding="async"></figure>
-      <figure data-clip><img src="/images/about/interior.jpg" alt="Bedroom interior by Elegance Ivy" loading="lazy" decoding="async"></figure>
+      <figure data-curtain><img src="/images/projects/bathrooms-interiors/03.jpg" srcset="/images/projects/bathrooms-interiors/03-sm.jpg 900w, /images/projects/bathrooms-interiors/03.jpg 1080w" sizes="(max-width: 760px) 100vw, 60vw" alt="Living room designed by Elegance Ivy" loading="lazy" decoding="async"></figure>
+      <figure data-curtain><img src="/images/about/interior.jpg" alt="Bedroom interior by Elegance Ivy" loading="lazy" decoding="async"><figcaption>Bedroom &middot; Interior design</figcaption></figure>
     </div>
     <div class="principles" data-stagger>
       <div class="principle" data-reveal>
@@ -146,14 +162,16 @@
   </div>
 </section>
 
-<section class="section tone-paper">
-  <div class="wrap">
-    <div class="folio" data-reveal><b>03</b><span>Selected work</span><span>Elegance Ivy</span></div>
-    <div class="section-head">
-      <h2 class="h2" data-reveal>Selected<br><em>work</em></h2>
-      <a class="link-arrow" href="/projects" data-underline>All projects &#8594;</a>
+<section class="showcase tone-paper" data-showcase>
+  <div class="showcase-pin">
+    <div class="wrap showcase-head">
+      <div class="folio" data-reveal><b>03</b><span>Selected work</span><span>Elegance Ivy</span></div>
+      <div class="showcase-title">
+        <h2 class="h2" data-reveal>Selected <em>work</em></h2>
+        <div class="showcase-meta" aria-hidden="true"><span data-showcase-count>01</span><i><b data-showcase-bar></b></i><span data-showcase-total>04</span></div>
+      </div>
     </div>
-    <div data-project-spreads="odyssey-lodge,bathrooms-interiors,karanda-hospital"></div>
+    <div class="showcase-track" data-project-showcase="odyssey-lodge,bathrooms-interiors,karanda-hospital"></div>
   </div>
 </section>
 
@@ -236,23 +254,23 @@
   </div>
 </section>
 
-<section class="section-sm tone-paper rule-top">
+<section class="section-sm tone-paper rule-top clients-strip">
   <div class="wrap">
     <div class="section-head" data-reveal>
-      <h2 class="h2-sm">Trusted by</h2>
+      <h2 class="h2-sm">Trusted <em>by</em></h2>
       <a class="link-arrow" href="/clients" data-underline>All clients &#8594;</a>
     </div>
-    <div class="tiles tiles-sm" data-client-tiles></div>
+    <div class="logo-marquee" data-client-marquee></div>
   </div>
 </section>
 
 <section class="cta-image">
-  <picture><source media="(max-width: 767px)" srcset="/images/feature/bar-sm.jpg"><img src="/images/feature/bar.jpg" alt="" loading="lazy" decoding="async"></picture>
+  <picture><source media="(max-width: 767px)" srcset="/images/feature/bar-sm.jpg"><img src="/images/feature/bar.jpg" alt="" loading="lazy" decoding="async" data-parallax></picture>
   <div class="wrap">
     <span class="eyebrow" data-reveal style="color:var(--brass)">Begin</span>
     <h2 class="display" data-reveal style="margin-top:22px">Let&rsquo;s build something <em>exceptional.</em></h2>
     <div class="cta-row" data-reveal>
-      <a class="btn btn-gold" href="/contact">Book a consultation <span>&#8594;</span></a>
+      <a class="btn-cta" href="/contact"><span>Book a consultation</span></a>
       <p>Tell us about your next project.</p>
     </div>
   </div>
