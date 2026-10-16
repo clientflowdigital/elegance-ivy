@@ -24,7 +24,8 @@ EI.site = {
 
 /* ---------- Projects ----------
    Photos live in /images/projects/<slug>/01.jpg, 02.jpg ... (plus 01-sm.jpg
-   thumbnails). `count` is how many photos the folder holds; photo 01 is the cover. */
+   thumbnails). `count` is how many photos the folder holds. `cover` picks the
+   photo shown on cards (default '01'); the gallery still starts at 01. */
 EI.projects = [
   {
     slug: 'karanda-hospital', title: 'Karanda Hospital', count: 11,
@@ -32,7 +33,7 @@ EI.projects = [
     summary: 'Foundations, brickwork, suspended deck and the completed blocks.'
   },
   {
-    slug: 'odyssey-lodge', title: 'Odyssey Lodge', count: 10,
+    slug: 'odyssey-lodge', title: 'Odyssey Lodge', count: 10, cover: '04',
     type: 'Hospitality construction & interiors', cats: ['Construction', 'Hospitality', 'Interiors'],
     summary: 'Construction and interior finishing for a lodge, from shell to bar, suites and bathrooms.'
   },
@@ -47,7 +48,7 @@ EI.projects = [
     summary: 'Site clearing, excavation and strip footings for the labour ward.'
   },
   {
-    slug: 'bathrooms-interiors', title: 'Bathrooms & Interiors', count: 9,
+    slug: 'bathrooms-interiors', title: 'Bathrooms & Interiors', count: 9, cover: '02',
     type: 'Interior design & finishes', cats: ['Interiors', 'Residential'],
     summary: 'Bathrooms, living spaces and offices finished to a high specification.'
   },

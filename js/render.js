@@ -3,6 +3,7 @@
 
    <div data-service-rows></div>                     all services as rows
    <div data-project-cards="all|3|slug,slug"></div>  project cards
+   <div data-project-spreads="slug,slug"></div>      large editorial project spreads
    <div data-project-gallery="slug"></div>           selected + full gallery
    <div data-photos="slug/01,slug/04"></div>         a small photo grid
    <div data-gallery-browser></div>                  filterable gallery (all projects)
@@ -37,14 +38,14 @@
 
   /* ---------- Project cards ---------- */
   const projectCard = (p) => {
-    const cover = EI.photo(p.slug + '/01');
+    const cover = EI.photo(p.slug + '/' + (p.cover || '01'));
     return '<a class="project-card" href="/projects/' + p.slug + '" data-card>' +
       '<div class="media" data-clip>' +
         '<img data-zoom src="' + cover.src + '" alt="' + esc(p.title) + ' — Elegance Ivy project" loading="lazy" decoding="async">' +
         '<div class="veil"></div>' +
         '<div class="overlay"><div><div class="eyebrow">' + esc(p.type) + '</div><div class="name">' + esc(p.title) + '</div></div><span class="arrow">&#8594;</span></div>' +
       '</div>' +
-      '<div class="meta-line"><span>' + esc(p.title) + '</span><span>' + p.count + ' photos</span></div>' +
+      '<div class="meta-line"><small>' + esc(p.type) + '</small><span>' + esc(p.title) + '</span><span>' + p.count + ' photos</span></div>' +
     '</a>';
   };
   each('[data-project-cards]', (el) => {
@@ -55,6 +56,25 @@
     el.classList.add('card-grid');
     el.setAttribute('data-stagger', '');
     el.innerHTML = list.map(projectCard).join('');
+  });
+
+  /* ---------- Project spreads: image and text side by side, alternating ---------- */
+  each('[data-project-spreads]', (el) => {
+    const list = el.dataset.projectSpreads.split(',').map((s) => EI.findProject(s.trim())).filter(Boolean);
+    el.classList.add('spreads');
+    el.innerHTML = list.map((p, i) => {
+      const cover = EI.photo(p.slug + '/' + (p.cover || '01'));
+      return '<a class="spread" href="/projects/' + p.slug + '" data-card>' +
+        '<div class="spread-media" data-clip><img data-zoom src="' + cover.full + '" srcset="' + cover.src + ' 900w, ' + cover.full + ' 2000w" sizes="(max-width: 820px) 100vw, 58vw" alt="' + esc(p.title) + ' by Elegance Ivy" loading="lazy" decoding="async"></div>' +
+        '<div class="spread-text" data-reveal>' +
+          '<span class="spread-num" aria-hidden="true">' + EI.pad(i + 1) + '</span>' +
+          '<span class="eyebrow">' + esc(p.type) + '</span>' +
+          '<h3>' + esc(p.title) + '</h3>' +
+          '<p>' + esc(p.summary) + '</p>' +
+          '<div class="spread-foot"><span>' + p.count + ' photographs</span><span>View project <span class="arrow">&#8594;</span></span></div>' +
+        '</div>' +
+      '</a>';
+    }).join('');
   });
 
   /* ---------- Photo grids (lightbox-enabled) ---------- */

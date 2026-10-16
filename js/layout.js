@@ -24,17 +24,24 @@
 
   const WA_ICON = '<svg viewBox="0 0 32 32" width="30" height="30" fill="#0A0A09" aria-hidden="true"><path d="M16.04 4C9.4 4 4 9.4 4 16.04c0 2.12.55 4.19 1.6 6.02L4 28l6.1-1.6a12 12 0 005.94 1.55h.01C22.69 27.95 28.09 22.55 28.09 15.9c0-3.21-1.25-6.23-3.52-8.5A11.94 11.94 0 0016.04 4zm0 21.9h-.01a9.97 9.97 0 01-5.08-1.39l-.36-.22-3.77.99 1.01-3.68-.24-.38a9.93 9.93 0 01-1.52-5.29c0-5.5 4.48-9.98 9.98-9.98 2.67 0 5.17 1.04 7.06 2.93a9.9 9.9 0 012.92 7.06c0 5.5-4.48 9.96-9.99 9.96zm5.48-7.46c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.41-1.49-.89-.79-1.49-1.77-1.67-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.38-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.09 4.49.71.31 1.27.49 1.7.63.71.23 1.36.19 1.88.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg>';
 
+  // Crest from the logo plus a typeset wordmark, so the name stays sharp at any size.
+  const BRAND =
+    '<a class="brand" href="/" aria-label="Elegance Ivy home">' +
+      '<img src="/images/brand/mark.png" alt="" width="44" height="44">' +
+      '<span class="wordmark" aria-hidden="true"><b>Elegance Ivy</b><small>Construction &amp; Interior Design</small></span>' +
+    '</a>';
+
   /* ---------- Header + menu ---------- */
   const header = document.createElement('header');
   header.className = 'site-header';
   header.innerHTML =
     '<div class="header-bar">' +
-      '<a class="brand" href="/" aria-label="Elegance Ivy home"><img src="/images/brand/logo-light.png" alt="Elegance Ivy Construction and Interior Design" width="97" height="44"></a>' +
+      BRAND +
       '<nav class="desk-nav" aria-label="Main">' +
         NAV.filter((n) => DESK.includes(n.id)).map((n) => '<a href="' + n.href + '" data-underline' + cur(n.id) + '>' + n.label + '</a>').join('') +
-        '<a class="btn btn-outline-gold" href="/contact">Start a project <span>&#8594;</span></a>' +
+        '<a class="btn btn-outline-gold" href="/contact">Enquire <span>&#8594;</span></a>' +
       '</nav>' +
-      '<button class="burger" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>' +
+      '<button class="burger" type="button" aria-expanded="false" aria-controls="site-menu"><i></i>Menu</button>' +
     '</div>';
 
   const menu = document.createElement('div');
@@ -45,16 +52,19 @@
   menu.setAttribute('aria-modal', 'true');
   menu.setAttribute('aria-label', 'Site menu');
   menu.innerHTML =
-    '<div class="menu-top"><img src="/images/brand/logo-light.png" alt="Elegance Ivy" width="88" height="40">' +
-      '<button class="burger" type="button" data-close style="display:flex">Close</button></div>' +
-    '<nav class="menu-list" aria-label="Mobile">' +
-      NAV.map((n, i) => '<a href="' + n.href + '" style="animation-delay:' + (0.06 + i * 0.04).toFixed(2) + 's"' + cur(n.id) + '>' + n.label + '<span>' + EI.pad(i + 1) + '</span></a>').join('') +
-    '</nav>' +
-    '<div class="menu-contact">' +
-      '<a href="mailto:' + S.email + '">' + S.email + '</a>' +
-      '<a href="tel:' + S.phones[0].tel + '">' + S.phones[0].label + '</a>' +
-      '<a href="' + S.mapUrl + '" target="_blank" rel="noopener">' + S.address + '</a>' +
-    '</div>';
+    '<div class="menu-main">' +
+      '<div class="menu-top">' + BRAND +
+        '<button class="burger" type="button" data-close style="display:flex">Close</button></div>' +
+      '<nav class="menu-list" aria-label="Site">' +
+        NAV.map((n, i) => '<a href="' + n.href + '" style="animation-delay:' + (0.06 + i * 0.04).toFixed(2) + 's"' + cur(n.id) + '>' + n.label + '<span>' + EI.pad(i + 1) + '</span></a>').join('') +
+      '</nav>' +
+      '<div class="menu-contact">' +
+        '<a href="mailto:' + S.email + '">' + S.email + '</a>' +
+        '<a href="tel:' + S.phones[0].tel + '">' + S.phones[0].label + '</a>' +
+        '<a href="' + S.mapUrl + '" target="_blank" rel="noopener">' + S.address + '</a>' +
+      '</div>' +
+    '</div>' +
+    '<div class="menu-aside" aria-hidden="true"><img src="/images/feature/bar-sm.jpg" alt="" loading="lazy"><p>Your dream is our blueprint.</p></div>';
 
   const grain = document.createElement('div');
   grain.className = 'grain';
@@ -104,10 +114,14 @@
   footer.className = 'site-footer';
   footer.innerHTML =
     '<div class="wrap">' +
+      '<div class="footer-mark">' +
+        '<img src="/images/brand/mark.png" alt="" width="64" height="64" loading="lazy">' +
+        '<div class="footer-word">Elegance Ivy</div>' +
+        '<p>Construction &amp; Interior Design</p>' +
+      '</div>' +
       '<div class="footer-grid">' +
         '<div>' +
-          '<img class="logo" src="/images/brand/logo-light.png" alt="Elegance Ivy" width="115" height="52" loading="lazy">' +
-          '<p class="footer-about">Elegance Ivy is a premier construction and interior design firm dedicated to transforming spaces into stunning and functional works of art.</p>' +
+          '<p class="footer-about">A premier construction and interior design firm, transforming spaces into stunning and functional works of art.</p>' +
           '<div class="socials">' +
             '<a href="' + S.socials.facebook + '" target="_blank" rel="noopener">Facebook</a>' +
             '<a href="' + S.socials.instagram + '" target="_blank" rel="noopener">Instagram</a>' +

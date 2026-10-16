@@ -30,7 +30,7 @@
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'crew-play';
-    btn.setAttribute('aria-label', 'Play video: meet the crew behind the build');
+    btn.setAttribute('aria-label', 'Play video: ' + (box.dataset.label || 'meet the crew behind the build'));
     btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
     const start = () => { video.controls = true; btn.hidden = true; };
     video.controls = false;
