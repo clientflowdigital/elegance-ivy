@@ -189,7 +189,9 @@
 [data-client-tiles] { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
 @media (min-width: 960px) { [data-client-tiles] { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .tiles > .client-tile { display: flex; align-items: center; gap: 22px; padding: 22px 24px; }
-.client-tile img { flex-shrink: 0; height: 84px; width: 84px; object-fit: contain; mix-blend-mode: multiply; }
+.client-tile img { flex-shrink: 0; height: 84px; width: 84px; object-fit: contain; }
+/* The logo files are white tiles: on light pages, multiply melts the white into the paper */
+.tone-paper .client-tile img, .tone-stone .client-tile img { mix-blend-mode: multiply; }
 @media (max-width: 600px) {
   [data-client-tiles] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .tiles > .client-tile { flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px 16px; }
@@ -214,6 +216,7 @@
   .gallery-grid.feature > :nth-child(2) { grid-column: span 5; }
   .gallery-grid.feature > :nth-child(3) { grid-column: span 5; }
   .gallery-grid.feature > :nth-child(4) { grid-column: span 7; }
+  .gallery-grid.feature > :nth-child(3):last-child { grid-column: 1 / -1; }
   .gallery-grid.feature > * img { height: 100%; aspect-ratio: auto; min-height: 380px; max-height: 620px; }
 }
 
