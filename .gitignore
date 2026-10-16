@@ -9,3 +9,6 @@ Thumbs.db
 .vscode/
 node_modules/
 .vercel
+
+# Source archives sent by the client (keep in uploads/)
+*.zip
