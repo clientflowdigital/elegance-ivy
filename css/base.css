@@ -152,13 +152,14 @@ button { cursor: pointer; }
 .folio::after { content: ""; flex: 1; height: 1px; background: var(--rule); order: 2; }
 .folio span:last-child { order: 3; }
 
-/* Giant outlined word set behind a section */
+/* Giant faint word set behind a section */
 .ghost {
   position: absolute; pointer-events: none; user-select: none; white-space: nowrap;
   font-family: var(--display); font-weight: 400; text-transform: uppercase; line-height: .8;
   font-size: clamp(90px, 19vw, 340px); letter-spacing: .02em;
-  color: transparent; -webkit-text-stroke: 1px var(--rule-strong); opacity: .7;
+  color: var(--rule-strong); opacity: .35;
 }
+.ghost::before { content: attr(data-word); }
 
 /* Brass hairline ornament: a short rule with a diamond */
 .ornament { display: flex; align-items: center; gap: 10px; color: var(--accent); }
